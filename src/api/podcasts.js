@@ -47,6 +47,18 @@ export const updatePodcast = async (podcast, podcastId) => {
   return data;
 };
 
+export const deletePodcast = async (podcastId) => {
+  const options = {
+    method: 'DELETE',
+    url: `/api/podcasts/${podcastId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`
+    }
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
+
 export const createComment = async (podcastId, comment) => {
   const options = {
     method: 'POST',
@@ -73,3 +85,4 @@ export const deleteComment = async (podcastId, commentId) => {
   const { data } = await axios.request(options);
   return data;
 };
+

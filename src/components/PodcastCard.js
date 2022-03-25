@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 
-import { getPodcastById, deleteComment, createComment } from '../api/podcasts';
+import { getPodcastById, deleteComment, createComment, deletePodcast } from '../api/podcasts';
 
 const PodcastCard = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [podcast, setPodcast] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
@@ -17,6 +18,8 @@ const PodcastCard = () => {
     };
     getData();
   }, []);
+
+
 
   const handleCommentChange = (e) => {
     setCommentValue(e.target.value);
@@ -34,10 +37,19 @@ const PodcastCard = () => {
     setPodcast(data);
   };
 
+  const handlePodcastDelete = async (podcastId) => {
+    try {
+      await deletePodcast(podcastId);
+      // setPodcast(null);
+      navigate('/podcasts');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (!podcast) {
     return <p>loading...</p>;
   }
-
   return (
     <div className="container mt-6">
       <div className="columns">
@@ -45,6 +57,8 @@ const PodcastCard = () => {
           <figure className="image">
             <img src={podcast.img} alt={podcast.title} />
           </figure>
+          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-danger' onClick={() => handlePodcastDelete(podcast._id)}>Delete Podcast</button>}
+
         </div>
         <div className="column is-half">
           <div className="card">
