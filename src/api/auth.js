@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 export const registerUser = async (user) => {
-  const options ={
-    method: 'POST', 
-    url: '/api/register', 
-    data: user
-  }
+  const options = {
+    method: 'POST',
+    url: '/api/register',
+    data: user,
+  };
   const { data } = await axios.request(options);
   return data;
-}
+};
 
 export const loginUser = async (credentials) => {
   const options = {
