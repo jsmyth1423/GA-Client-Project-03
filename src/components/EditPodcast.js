@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { createPodcast } from '../api/podcasts';
+import { createPodcast, updatePodcast } from '../api/podcasts';
 import { useNavigate } from 'react-router-dom';
 import { getPodcastById } from '../api/podcasts';
 
@@ -35,9 +35,10 @@ function PodcastNew() {
 
     const getData = async () => {
       try {
-        await createPodcast(podcast);
-        navigate('/');
-        console.log('hi', podcast);
+        console.log('hi', podcast)
+        await updatePodcast(podcast, id);
+        navigate('/podcasts');
+        console.log('hi2', podcast);
       } catch (err) {
         console.log(err);
       }

@@ -26,7 +26,7 @@ function PodcastNew() {
     const getData = async () => {
       try {
         await createPodcast(podcast)
-        navigate('/');
+        navigate('/podcasts');
         console.log('hi', podcast)
       } catch (err){
         console.log(err)

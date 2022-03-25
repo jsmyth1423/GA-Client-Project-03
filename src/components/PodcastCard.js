@@ -58,7 +58,7 @@ const PodcastCard = () => {
             <img src={podcast.img} alt={podcast.title} />
           </figure>
           {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-danger m-4' onClick={() => handlePodcastDelete(podcast._id)}>Delete Podcast</button>}
-          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-success mt-4' onClick={() => navigate('/podcasts/:id/edit')}>Update Podcast</button>}
+          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-success mt-4' onClick={() => navigate(`/podcasts/${podcast._id}/edit`)}>Update Podcast</button>}
 
         </div>
         <div className="column is-half">
