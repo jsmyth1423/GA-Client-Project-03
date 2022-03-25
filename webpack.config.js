@@ -11,8 +11,8 @@ module.exports = (webpackEnv) => {
   const publicPath =
     webpackEnv.NODE_ENV === 'local'
       ? {
-          publicPath: '/'
-        }
+        publicPath: '/'
+      }
       : {};
   return {
     entry: './src/index.js',
@@ -37,14 +37,14 @@ module.exports = (webpackEnv) => {
       // contentBase: path.resolve('src'),
       hot: true,
       open: true,
-      port: 8001,
+      port: 8010,
       // watchContentBase: true,
       historyApiFallback: true,
       proxy: {
         // ! This tells webpack about express. Any requests to we prefix with /api will get redirected to express!
         '/api': {
           // Our express server. It's not running on https, so it'll be http!
-          target: 'http://localhost:8000',
+          target: 'http://localhost:8005',
           // This is for development purposes only, so we aren't too worried about securing our proxy!
           secure: false
         }
