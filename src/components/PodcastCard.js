@@ -54,7 +54,7 @@ const PodcastCard = () => {
             <p>{podcast.description}</p>
           </div>
 
-          {!getLoggedInUserId() && <form onSubmit={handleCommentSubmit}>
+          {getLoggedInUserId() && <form onSubmit={handleCommentSubmit}>
             <div className="form mt-4">
               <label htmlFor="comment" className="label">
                 Post a comment

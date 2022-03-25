@@ -31,10 +31,10 @@ const Navbar = () => {
           <Link to='/register' className='navbar-item'>
             Register
           </Link>
-          {!getLoggedInUserId() && <Link to='/' className="navbar-item" onClick={logout}>
+          {getLoggedInUserId() && <Link to='/' className="navbar-item" onClick={logout}>
             Logout
           </Link>}
-          {!getLoggedInUserId() &&<Link to='/createpodcast' className='navbar-item'>
+          {getLoggedInUserId() &&<Link to='/createpodcast' className='navbar-item'>
             Create New Podcast
           </Link>}
         </div>

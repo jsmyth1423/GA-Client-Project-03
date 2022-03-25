@@ -1,9 +1,11 @@
 import React from 'react';
 import { loginUser } from '../../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [emailValue, setEmailValue] = React.useState('');
   const [passwordValue, setPasswordValue] = React.useState('');
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     setEmailValue(e.target.value);
@@ -15,7 +17,18 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginUser({ email: emailValue, password: passwordValue });
+    const getData = async () => {
+      try {
+        await loginUser({
+          email: emailValue,
+          password: passwordValue,
+        });
+        navigate('/podcasts');
+      } catch (err) {
+        console.log('HI', err);
+      }
+    };
+    getData();
   };
 
   return (

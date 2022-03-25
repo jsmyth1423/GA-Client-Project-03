@@ -22,11 +22,12 @@ function PodcastNew() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log('yo', podcast);
     const getData = async () => {
       try {
         await createPodcast(podcast)
         navigate('/');
-        console.log(podcast)
+        console.log('hi', podcast)
       } catch (err){
         console.log(err)
       }

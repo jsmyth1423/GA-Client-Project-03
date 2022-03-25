@@ -1,11 +1,13 @@
 import React from 'react';
 import { registerUser } from '../../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [usernameValue, setUsernameValue] = React.useState('');
   const [emailValue, setEmailValue] = React.useState('');
   const [passwordValue, setPasswordValue] = React.useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = React.useState('');
+  const navigate = useNavigate()
 
   const handleUsernameChange = (e) => {
     setUsernameValue(e.target.value);
@@ -23,12 +25,20 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerUser({
-      username: usernameValue,
-      email: emailValue,
-      password: passwordValue,
-      confirmPassword: confirmPasswordValue,
-    });
+    const getData = async () => {
+      try { 
+        await registerUser({
+          username: usernameValue,
+          email: emailValue,
+          password: passwordValue,
+          confirmPassword: confirmPasswordValue
+        })
+        navigate('/login')
+      } catch (err) {
+        console.log('HI', err)
+      }
+    }
+    getData();
   };
 
   return (
