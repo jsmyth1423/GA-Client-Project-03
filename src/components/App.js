@@ -4,6 +4,7 @@ import PodcastIndex from './PodcastIndex';
 import PodcastCard from './PodcastCard';
 import Navbar from './Navbar';
 import PodcastNew from './NewPodcast';
+import EditPodcast from './EditPodcast';
 
 import '../styles/style.scss';
 import Login from './auth/Login';
@@ -16,10 +17,9 @@ const App = () => (
       <Route path='/' element={<h1>Hello world</h1>} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/' element={<h1>Hello world</h1>} />
+      <Route path='/podcasts/:id/edit' element={<EditPodcast />} />
       <Route path='/podcasts' element={<PodcastIndex />} />
       <Route path='/podcasts/:id' element={<PodcastCard />} />
-
       <Route path='createpodcast' element={<PodcastNew />} />
     </Routes>
   </BrowserRouter>
