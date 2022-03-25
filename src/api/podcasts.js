@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getAllPodcasts = async () => {
   const options = {
     method: 'GET',
-    url: '/api/movies'
+    url: '/api/podcasts'
   };
 
   const { data } = await axios.request(options);
