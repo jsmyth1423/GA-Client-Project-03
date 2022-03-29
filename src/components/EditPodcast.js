@@ -35,7 +35,7 @@ function PodcastNew() {
 
     const getData = async () => {
       try {
-        console.log('hi', podcast)
+        console.log('hi', podcast);
         await updatePodcast(podcast, id);
         navigate('/podcasts');
         console.log('hi2', podcast);
@@ -138,21 +138,40 @@ function PodcastNew() {
                 />
               </div>
             </div>
-            <div className='field'>
-              <label className='label'>Genre</label>
-              <div className='control'>
-                <input
+            <label className='label'>Genre</label>
+            <div className='control'>
+              <div className='select'>
+                <select
                   className='input'
-                  placeholder='Genre'
-                  name='genre'
+                  placholder='Genre'
                   onChange={handleChange}
                   value={podcast.genre}
-                />
+                >
+                  <option>Arts &amp; Entertainment</option>
+                  <option>Business &amp; Investment</option>
+                  <option>Comedy</option>
+                  <option>Crime</option>
+                  <option>Culture</option>
+                  <option>Environment/Science</option>
+                  <option>Food &amp; Drink</option>
+                  <option>Health</option>
+                  <option>Miscellaneous</option>
+                  <option>News &amp; Current Affairs</option>
+                  <option>Politics</option>
+                  <option>Sports</option>
+                  <option>Technology</option>
+                  <option>Travel</option>
+                </select>
               </div>
             </div>
+
             <div className='field'>
-              <button type='submit' className='button is-danger is-fullwidth'>
-                Make my Podcast!
+              <button
+                type='submit'
+                className='button is-danger is-fullwidth'
+                onSubmit={handleSubmit}
+              >
+                Update my Podcast!
               </button>
             </div>
           </form>
