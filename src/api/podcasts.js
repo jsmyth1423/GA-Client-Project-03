@@ -88,6 +88,7 @@ export const deleteComment = async (podcastId, commentId) => {
 
 
 export const getPodcastByName = async (userSearches, searchByField) => {
+  console.log('This is usersearches and searchbyField', userSearches, searchByField)
   const options = {
     method: 'GET',
     url: `/api/podcasts/search?${searchByField}=${userSearches}`,

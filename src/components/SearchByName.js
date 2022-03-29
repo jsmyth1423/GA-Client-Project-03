@@ -11,7 +11,7 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
     const getData = async () => {
       try {
         const { data } = await getPodcastByName(userSearches, searchByField);
-        console.log('This is data', data);
+        console.log('This is DATAAA', data);
         setPodcast(data);
       } catch (err) {
         console.log('This is the error', err);
@@ -21,49 +21,53 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
   }, []);
 
   function filterPodcasts() {
+    console.log('THIS IS THE PODCAST ARRAY', podcast);
     if (userSearches === null) {
-      return podcast;
+      console.log('User search is null');
     } else {
       return podcast.filter((podcastItem) => {
-        console.log(podcastItem.title);
         return podcastItem.title.toLowerCase().includes(userSearches);
       });
     }
   }
 
   return (
-    <section className='section'>
-      <div className='container'>
-        <div className='columns is-multiline'>
-          {!podcast ? (
-            <></>
+    // <section className='section'>
+    //   <div className='container'>
+    //     <div className='columns is-multiline'>
+    <>
+          {podcast.length === 0 ? (
+            <>Loading...or no results</>
           ) : (
             filterPodcasts().map((podcast) => {
+              console.log('This is podcast', podcast)
               return (
-                <div key={podcast._id} className='column card'>
-                  <Link
-                    to={`/podcasts/${podcast._id}`}
-                    onClick={
-                      <Link
-                        to={`/podcast/${podcast._id}`}
-                        className='navbar-item'
-                      ></Link>
-                    }
-                  >
-                    <h2 className='card-header'>Title: {podcast.title}</h2>
-                    <div className='card-image'>
-                      <figure className='image'>
-                        <img src={podcast.img} alt={podcast.title} />
-                      </figure>
-                    </div>
-                  </Link>
-                </div>
+                <div>{podcast.title}</div>
+                // <div key={podcast._id} className='column card'>
+                //   <Link
+                //     to={`/podcasts/${podcast._id}`}
+                //     onClick={
+                //       <Link
+                //         to={`/podcast/${podcast._id}`}
+                //         className='navbar-item'
+                //       ></Link>
+                //     }
+                //   >
+                //     <h2 className='card-header'>Title: {podcast.title}</h2>
+                //     <div className='card-image'>
+                //       <figure className='image'>
+                //         <img src={podcast.img} alt={podcast.title} />
+                //       </figure>
+                //     </div>
+                //   </Link>
+                // </div>
               );
             })
           )}
-        </div>
-      </div>
-    </section>
+      </>
+    //     </div>
+    //   </div>
+    // </section>
   );
 };
 

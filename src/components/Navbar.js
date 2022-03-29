@@ -71,11 +71,11 @@ const Navbar = () => {
               <option value='title'>Title</option>
               <option value='description'>Description</option>
               <option value='host'>Host</option>
-              <option value='guest'>Guest</option>
+              <option value='guests'>Guests</option>
               <option value='genre'>Genre</option>
             </select>
             {!whatUserTypes ? (
-              <></>
+              <div>no results</div>
             ) : (
               <section className='hero is-fullheight-with-navbar mt-6'>
                 <div className='hero-body'>
