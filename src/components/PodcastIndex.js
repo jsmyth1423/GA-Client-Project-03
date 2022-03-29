@@ -13,20 +13,18 @@ const PodcastIndex = () => {
     getData();
   }, []);
 
-  console.log('Podcasts are', podcasts);
-
   return (
     <>
-      <h1 className='title'>Podcasts:</h1>
+      <h1 className="title">Podcasts:</h1>
       {podcasts ? (
         <div className="container">
           <div className="columns">
             {podcasts.map((podcast) => (
-              <div key={podcast._id} className='column card'>
+              <div key={podcast._id} className="column card">
                 <Link to={`/podcasts/${podcast._id}`}>
-                  <h2 className='card-header'>Title: {podcast.title}</h2>
+                  <h2 className="card-header">Title: {podcast.title}</h2>
                   <div className="card-image">
-                    <figure className='image'>
+                    <figure className="image">
                       <img src={podcast.img} alt={podcast.title} />
                     </figure>
                   </div>
@@ -34,7 +32,7 @@ const PodcastIndex = () => {
               </div>
             ))}
           </div>
-        </div >
+        </div>
       ) : (
         <p>loading...</p>
       )}

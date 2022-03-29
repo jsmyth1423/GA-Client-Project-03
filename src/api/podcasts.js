@@ -86,17 +86,13 @@ export const deleteComment = async (podcastId, commentId) => {
   return data;
 };
 
-
 export const getPodcastByName = async (userSearches, searchByField) => {
-  console.log('This is usersearches and searchbyField', userSearches, searchByField)
   const options = {
     method: 'GET',
-    url: `/api/podcasts/search?${searchByField}=${userSearches}`,
+    url: `/api/podcasts/search?${searchByField}=${userSearches}`
     // url: `/api/podcasts/search?title=${title}&description=&host=&guests=&genre=`,
-    
   };
-  
+
   const data = await axios.request(options);
-  console.log('OMG DATA', data)
   return data;
-}
+};
