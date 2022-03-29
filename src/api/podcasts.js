@@ -86,3 +86,15 @@ export const deleteComment = async (podcastId, commentId) => {
   return data;
 };
 
+
+export const getPodcastByName = async (title) => {
+  const options = {
+    method: 'GET',
+    // url: `/api/podcasts/search?title=${title}&description=${description}&host=${host}&guests=${guests}&genre=${genre}`,
+    url: `/api/podcasts/search?title=${title}&description=&host=&guests=&genre=`,
+    
+  };
+
+  const data = await axios.request(options);
+  return data;
+}
