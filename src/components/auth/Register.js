@@ -35,7 +35,7 @@ const Register = () => {
         });
         navigate('/login');
       } catch (err) {
-        console.log('HI', err);
+        console.log('Error', err);
       }
     };
     getData();

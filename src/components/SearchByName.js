@@ -8,14 +8,12 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
     const getData = async () => {
       try {
         const { data } = await getPodcastByName(userSearches, searchByField);
-        console.log('SETTING PODCAST', data);
         setPodcast(data);
       } catch (err) {}
     };
     getData();
   }, [userSearches, searchByField]);
 
-  console.log('PODCAST IS', podcast);
 
   return (
     <>
@@ -23,7 +21,6 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
         <>Loading...or no results</>
       ) : (
         podcast.map((item) => {
-          console.log({ item });
           return (
             <>
               <div key={item.title}>{item.title}</div>

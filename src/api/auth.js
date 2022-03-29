@@ -41,7 +41,7 @@ export const loginUser = async (credentials) => {
 
 
 export const updateUser = async (userId, likedPodcasts) => {
-  console.log(data);
+  
   const options = {
     method: 'PUT',
     url: `/api/user/${userId}`,
@@ -51,7 +51,6 @@ export const updateUser = async (userId, likedPodcasts) => {
     }
   };
   const data = await axios.request(options);
-  console.log(data.config.data);
-  console.log('options', options);
+
   return data;
 };

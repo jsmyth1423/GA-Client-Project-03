@@ -35,10 +35,8 @@ function PodcastNew() {
 
     const getData = async () => {
       try {
-        console.log('hi', podcast);
         await updatePodcast(podcast, id);
         navigate('/podcasts');
-        console.log('hi2', podcast);
       } catch (err) {
         console.log(err);
       }
