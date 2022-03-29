@@ -1,5 +1,5 @@
 import React from 'react';
-import { createPodcast } from '../api/podcasts'
+import { createPodcast } from '../api/podcasts';
 import { useNavigate } from 'react-router-dom';
 
 function PodcastNew() {
@@ -12,12 +12,11 @@ function PodcastNew() {
     duration: '',
     host: '',
     guests: '',
-    genre: ''
+    genre: '',
   });
 
-
   function handleChange(event) {
-    setPodcast({...podcast, [event.target.name]: event.target.value })
+    setPodcast({ ...podcast, [event.target.name]: event.target.value });
   }
 
   function handleSubmit(event) {
@@ -25,22 +24,24 @@ function PodcastNew() {
     console.log('yo', podcast);
     const getData = async () => {
       try {
-        await createPodcast(podcast)
+        await createPodcast(podcast);
         navigate('/podcasts');
-        console.log('hi', podcast)
-      } catch (err){
-        console.log(err)
+        console.log('hi', podcast);
+      } catch (err) {
+        console.log(err);
       }
-    }
+    };
     getData();
   }
-
 
   return (
     <section>
       <div className='container'>
         <div className='columns'>
-          <form className='column is-half is-offset-one-quarter box' onSubmit={handleSubmit}>
+          <form
+            className='column is-half is-offset-one-quarter box'
+            onSubmit={handleSubmit}
+          >
             <div className='field'>
               <label className='label'>Title*</label>
               <div className='control'>
@@ -128,19 +129,25 @@ function PodcastNew() {
             <div className='field'>
               <label className='label'>Genre</label>
               <div className='control'>
-                <input
-                  className='input'
-                  placeholder='Genre'
-                  name='genre'
-                  onChange={handleChange}
-                  value={podcast.genre}
-                />
+                <div className='select'>
+                  <select>
+                    <option>Arts &amp; Entertainment</option>
+                    <option>Business &amp; Investment</option>
+                    <option>Comedy</option>
+                    <option>Crime</option>
+                    <option>Culture</option>
+                    <option>Environment/Science</option>
+                    <option>Food &amp; Drink</option>
+                    <option>Health</option>
+                    <option>Miscellaneous</option>
+                    <option>News &amp; Current Affairs</option>
+                    <option>Politics</option>
+                    <option>Sports</option>
+                    <option>Technology</option>
+                    <option>Travel</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div className='field'>
-              <button type='submit' className='button is-danger is-fullwidth'>
-                Make my Podcast!
-              </button>
             </div>
           </form>
         </div>
@@ -149,4 +156,4 @@ function PodcastNew() {
   );
 }
 
-export default PodcastNew
+export default PodcastNew;
