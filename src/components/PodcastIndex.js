@@ -13,8 +13,6 @@ const PodcastIndex = () => {
     getData();
   }, []);
 
-  console.log('Podcasts are', podcasts);
-
   return (
     <>
       <section className='hero is-fullheight-with-navbar' id='index-container'>
