@@ -7,6 +7,9 @@ const Navbar = () => {
 
   // const [isUser, setIsUser] = React.useState()
   const [whatUserTypes, setWhatUserTypes] = React.useState('')
+  const [searchField, setSearchField] =React.useState('title')
+
+
   console.log('is this true?', getLoggedInUserId());
   const navigate = useNavigate();
 
@@ -18,6 +21,12 @@ const Navbar = () => {
 
   function handleChange (event){
     setWhatUserTypes(event.target.value)
+  }
+
+  function handleClick (event) {
+    const searchByValue = event.target.selectedOptions[0].value;
+    setSearchField(searchByValue)
+    setWhatUserTypes('')
   }
 
 
@@ -58,6 +67,13 @@ const Navbar = () => {
                 value={whatUserTypes}
               ></input>
             </div>
+            <select name='selectList' id='selectList' onChange={handleClick}>
+              <option value='title'>Title</option>
+              <option value='description'>Description</option>
+              <option value='host'>Host</option>
+              <option value='guest'>Guest</option>
+              <option value='genre'>Genre</option>
+            </select>
             {!whatUserTypes ? (
               <></>
             ) : (
@@ -68,6 +84,7 @@ const Navbar = () => {
                       <SearchByName
                         key={whatUserTypes}
                         userSearches={whatUserTypes}
+                        searchByField={searchField}
                       />
                     </div>
                   </div>
