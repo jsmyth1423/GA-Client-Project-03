@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Home from './Home';
 import PodcastIndex from './PodcastIndex';
 import PodcastCard from './PodcastCard';
 import Navbar from './Navbar';
@@ -14,7 +16,7 @@ const App = () => (
   <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/' element={<h1>Hello world</h1>} />
+      <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/podcasts/:id/edit' element={<EditPodcast />} />

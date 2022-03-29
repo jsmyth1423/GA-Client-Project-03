@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation} from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
-import SearchByName from './SearchByName'
+import SearchByName from './SearchByName';
 
 const Navbar = () => {
-
   // const [isUser, setIsUser] = React.useState()
-  const [whatUserTypes, setWhatUserTypes] = React.useState('')
+  const [whatUserTypes, setWhatUserTypes] = React.useState('');
   console.log('is this true?', getLoggedInUserId());
   const navigate = useNavigate();
-
 
   const logout = () => {
     sessionStorage.removeItem('token');
     navigate('/');
   };
 
-  function handleChange (event){
-    setWhatUserTypes(event.target.value)
+  function handleChange(event) {
+    setWhatUserTypes(event.target.value);
   }
-
 
   return (
     <>
-      <nav>
+      <nav className='navbar is-dark'>
         <div className='navbar-brand'>
           <Link to='/' className='navbar-item'>
             Home
@@ -86,6 +83,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
