@@ -1,67 +1,56 @@
-import React from "react";
-import { getPodcastByName } from "../api/podcasts";
-import { Link } from 'react-router-dom'
-const SearchPodcast = ({ userSearches }) => {
+import React from 'react';
+import { getPodcastByName } from '../api/podcasts';
+import { Link } from 'react-router-dom';
 
-
-  const [podcast, setPodcast] = React.useState('')
-  
+const SearchPodcast = ({ userSearches, searchByField }) => {
+  const [podcast, setPodcast] = React.useState([]);
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await getPodcastByName(userSearches);
-        console.log('This is data', data)
+        const { data } = await getPodcastByName(userSearches, searchByField);
+        console.log('SETTING PODCAST', data);
         setPodcast(data);
-      } catch (err) {
-        console.log('YOOOO', err);
-      }
+      } catch (err) {}
     };
     getData();
-  }, []);
+  }, [userSearches, searchByField]);
 
-
-
-  function filterPodcasts(){
-    if (userSearches === null){
-      return podcast
-    } else {
-      return podcast.filter((podcastItem) => {
-        console.log(podcastItem.title)
-        return podcastItem.title.toLowerCase().includes(userSearches)
-      })
-    }
-  }
-
-
+  console.log('PODCAST IS', podcast);
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="columns is-multiline">
-          {!podcast ? (
-            <></>
-          ) : (
-            
-            filterPodcasts().map((podcast) =>  {
-              return (
-                <div key={podcast._id} className='column card'>
-                  <Link to={`/podcasts/${podcast._id}`}  onClick={<Link to={`/podcast/${podcast._id}`} className='navbar-item'></Link>}>
-                    <h2 className='card-header'>Title: {podcast.title}</h2>
-                    <div className='card-image'>
-                      <figure className='image'>
-                        <img src={podcast.img} alt={podcast.title} />
-                      </figure>
-                    </div>
-                  </Link>
-                </div>
-              );
-            }
-            ))}
-        </div>
-      </div>
-    </section>
-  )
+    <>
+      {!podcast.length ? (
+        <>Loading...or no results</>
+      ) : (
+        podcast.map((item) => {
+          console.log({ item });
+          return (
+            <>
+              <div key={item.title}>{item.title}</div>
+              <div key={item._id} className="column card">
+                <Link
+                  to={`/podcasts/${item._id}`}
+                  onClick={
+                    <Link
+                      to={`/podcast/${item._id}`}
+                      className="navbar-item"
+                    ></Link>
+                  }
+                >
+                  <h2 className="card-header">Title: {item.title}</h2>
+                  <div className="card-image">
+                    <figure className="image">
+                      <img src={item.img} alt={item.title} />
+                    </figure>
+                  </div>
+                </Link>
+              </div>
+            </>
+          );
+        })
+      )}
+    </>
+  );
+};
 
-}
-
-export default SearchPodcast
+export default SearchPodcast;

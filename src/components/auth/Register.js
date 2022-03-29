@@ -7,7 +7,7 @@ const Register = () => {
   const [emailValue, setEmailValue] = React.useState('');
   const [passwordValue, setPasswordValue] = React.useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = React.useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsernameValue(e.target.value);
@@ -26,23 +26,26 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const getData = async () => {
-      try { 
+      try {
         await registerUser({
           username: usernameValue,
           email: emailValue,
           password: passwordValue,
-          confirmPassword: confirmPasswordValue
-        })
-        navigate('/login')
+          confirmPassword: confirmPasswordValue,
+        });
+        navigate('/login');
       } catch (err) {
-        console.log('HI', err)
+        console.log('HI', err);
       }
-    }
+    };
     getData();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className='column is-half is-offset-one-quarter box'
+      onSubmit={handleSubmit}
+    >
       <div className='field'>
         <label htmlFor='username' className='label'>
           Username
@@ -100,7 +103,11 @@ const Register = () => {
         </div>
       </div>
 
-      <input type='submit' value='Register' />
+      <input
+        className='button is-primary is-fullwidth'
+        type='submit'
+        value='Register'
+      />
     </form>
   );
 };
