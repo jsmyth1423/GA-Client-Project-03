@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 
 import { getPodcastById, deleteComment, createComment, deletePodcast } from '../api/podcasts';
+import { updateUser, getUser } from '../api/auth';
 
 const PodcastCard = () => {
   const navigate = useNavigate();
@@ -47,6 +48,48 @@ const PodcastCard = () => {
     }
   };
 
+  // const like = 'LikeLoaded ♡';
+  // const unlike = 'UnlikeLoaded';
+  // const [onLoadText, setOnLoadText] = React.useState();
+  const [text, setText] = React.useState('Like ♡');
+
+  // const onPageLoad = async () => {
+  //   const userId = await getLoggedInUserId();
+  //   try {
+  //     const userObject = await getUser(userId);
+  //     console.log(Promise);
+  //     if (userObject.likedPodcasts.find(item => item === id)) {
+  //       console.log('podcast matched');
+  //       return unlike;
+  //     } else {
+  //       return like;
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log(onPageLoad());
+
+  const handleLikePodcast = async () => { // ? We need the loggedinuserId, the podcast url, 
+    const userId = await getLoggedInUserId();
+    try {
+      const userObject = await getUser(userId);
+      if (userObject.likedPodcasts.find(item => item === id)) {
+        console.log('podcast matched');
+        const unlikeText = 'Unlike';
+        setText(unlikeText);
+      } else {
+        const likeText = 'Like ♡';
+        setText(likeText);
+      }
+      await updateUser(userId, id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
   if (!podcast) {
     return <p>loading...</p>;
   }
@@ -57,8 +100,9 @@ const PodcastCard = () => {
           <figure className="image">
             <img src={podcast.img} alt={podcast.title} />
           </figure>
-          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-danger m-4' onClick={() => handlePodcastDelete(podcast._id)}>Delete Podcast</button>}
-          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-success mt-4' onClick={() => navigate(`/podcasts/${podcast._id}/edit`)}>Update Podcast</button>}
+          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-danger mt-4' onClick={() => handlePodcastDelete(podcast._id)}>Delete Podcast</button>}
+          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-warning m-4' onClick={() => navigate(`/podcasts/${podcast._id}/edit`)}>Update Podcast</button>}
+          {getLoggedInUserId() === podcast.createdBy && <button type='button' className='button is-success mt-4' onClick={handleLikePodcast}>{text}</button>}
 
         </div>
         <div className="column is-half">
