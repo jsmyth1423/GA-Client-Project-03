@@ -18,6 +18,13 @@ function PodcastNew() {
   function handleChange(event) {
     setPodcast({ ...podcast, [event.target.name]: event.target.value });
   }
+  function handleSelect(event) {
+    console.log(event.target);
+    setPodcast({
+      ...podcast,
+      [event.target.selectedOptions]: event.target.selectedOptions.value,
+    });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -124,31 +131,33 @@ function PodcastNew() {
                 />
               </div>
             </div>
-
-            <label className='label'>Genre</label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  className='input'
-                  placholder='Genre'
-                  onChange={handleChange}
-                  value={podcast.genre}
-                >
-                  <option>Arts &amp; Entertainment</option>
-                  <option>Business &amp; Investment</option>
-                  <option>Comedy</option>
-                  <option>Crime</option>
-                  <option>Culture</option>
-                  <option>Environment/Science</option>
-                  <option>Food &amp; Drink</option>
-                  <option>Health</option>
-                  <option>Miscellaneous</option>
-                  <option>News &amp; Current Affairs</option>
-                  <option>Politics</option>
-                  <option>Sports</option>
-                  <option>Technology</option>
-                  <option>Travel</option>
-                </select>
+            <div className='field'>
+              <label className='label'>Genre</label>
+              <div className='control'>
+                <div className='select'>
+                  <select value={podcast.genre}>
+                    <option value='arts'>Arts &amp; Entertainment</option>
+                    <option value='business'>Business &amp; Investment</option>
+                    <option value='comedy'>Comedy</option>
+                    <option value='crime'>Crime</option>
+                    <option value='culture' onChange={handleSelect}>
+                      Culture
+                    </option>
+                    <option value='environmentScience'>
+                      Environment/Science
+                    </option>
+                    <option value='food'>Food &amp; Drink</option>
+                    <option value='health'>Health</option>
+                    <option value='miscellaneous'>Miscellaneous</option>
+                    <option value='newsAnCurrentAffairs'>
+                      News &amp; Current Affairs
+                    </option>
+                    <option value='politics'>Politics</option>
+                    <option value='sports'>Sports</option>
+                    <option value='technology'>Technology</option>
+                    <option value='travel'>Travel</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div className='field'>
