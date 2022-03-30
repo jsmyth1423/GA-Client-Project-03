@@ -19,7 +19,7 @@ const PodcastCard = () => {
       className='button is-success mt-4'
       onClick={handleLikePodcast}
     >
-      Like
+      Like 
     </button>
   );
   const unlike = (

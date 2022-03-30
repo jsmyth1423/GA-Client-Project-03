@@ -43,6 +43,30 @@ function PodcastNew() {
     };
     getData();
   }
+  function handleIsActive(event) {
+    event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.classList.toggle('is-active');
+  }
+
+  function capitalizeFirstLetter(searchField) {
+    return searchField.charAt(0).toUpperCase() + searchField.slice(1);
+  }
+
+  function handleSelect(event) {
+    console.log('value of targer', event.target.id);
+    setPodcast({
+      ...podcast,
+      genre: event.target.id,
+    });
+  }
 
   return (
     <section>
@@ -136,33 +160,78 @@ function PodcastNew() {
                 />
               </div>
             </div>
-            <label className='label'>Genre</label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  className='input'
-                  placholder='Genre'
-                  onChange={handleChange}
-                  value={podcast.genre}
-                >
-                  <option>Arts &amp; Entertainment</option>
-                  <option>Business &amp; Investment</option>
-                  <option>Comedy</option>
-                  <option>Crime</option>
-                  <option>Culture</option>
-                  <option>Environment/Science</option>
-                  <option>Food &amp; Drink</option>
-                  <option>Health</option>
-                  <option>Miscellaneous</option>
-                  <option>News &amp; Current Affairs</option>
-                  <option>Politics</option>
-                  <option>Sports</option>
-                  <option>Technology</option>
-                  <option>Travel</option>
-                </select>
+
+            <div className='field'>
+              <label className='label'>Genre</label>
+              <div className='dropdown' 
+              onClick={handleIsActive}
+              >
+                <div class='dropdown-trigger'>
+                  <div
+                    class='button'
+                    aria-haspopup='true'
+                    aria-controls='dropdown-menu3'
+                  >
+                    <span>
+                      Selected Genre:
+                      {capitalizeFirstLetter(podcast.genre)}
+                    </span>
+                  </div>
+                </div>
+                <div class='dropdown-menu' id='dropdown-menu3' role='menu'>
+                  <div
+                    class='dropdown-content'
+                    name='selectList'
+                    id='selectList'
+                    onClick={handleSelect}
+                  >
+                    <a class='dropdown-item' id='arts'>
+                      Arts &amp; Entertainment
+                    </a>
+                    <a class='dropdown-item' id='business'>
+                      Business &amp; Investment
+                    </a>
+                    <a class='dropdown-item' id='comedy'>
+                      Comedy
+                    </a>
+                    <a class='dropdown-item' id='crime'>
+                      Crime
+                    </a>
+                    <a class='dropdown-item' id='culture'>
+                      Culture
+                    </a>
+                    <a class='dropdown-item' id='environment'>
+                      Environment/Science
+                    </a>
+                    <a class='dropdown-item' id='food'>
+                      Food &amp; Drink
+                    </a>
+                    <a class='dropdown-item' id='health'>
+                      Health
+                    </a>
+                    <a class='dropdown-item' id='miscellaneous'>
+                      Miscellaneous
+                    </a>
+                    <a class='dropdown-item' id='news'>
+                      News &amp; Current Affairs
+                    </a>
+                    <a class='dropdown-item' id='politics'>
+                      Politics
+                    </a>
+                    <a class='dropdown-item' id='sports'>
+                      Sports
+                    </a>
+                    <a class='dropdown-item' id='technology'>
+                      Technology
+                    </a>
+                    <a class='dropdown-item' id='travel'>
+                      Travel
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-
+            
             <div className='field'>
               <button
                 type='submit'
