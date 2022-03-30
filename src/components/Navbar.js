@@ -4,7 +4,6 @@ import { getLoggedInUserId } from '../lib/auth';
 import SearchByName from './SearchByName';
 
 const Navbar = () => {
-  // const [isUser, setIsUser] = React.useState()
   const [whatUserTypes, setWhatUserTypes] = React.useState('');
   const [searchField, setSearchField] = React.useState('title');
 
@@ -20,10 +19,32 @@ const Navbar = () => {
   }
 
   function handleClick(event) {
-    const searchByValue = event.target.selectedOptions[0].value;
+    console.log(event.target.innerText.toLowerCase());
+    const searchByValue = event.target.innerText.toLowerCase();
     setSearchField(searchByValue);
     setWhatUserTypes('');
   }
+
+  function handleIsActive(event) {
+    event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+
+  }
+
+  function capitalizeFirstLetter(searchField) {
+    return searchField.charAt(0).toUpperCase() + searchField.slice(1);
+  }
+
 
   return (
     <>
@@ -53,48 +74,71 @@ const Navbar = () => {
           )}
 
           <div className='navbar-end is-hidden-touch'>
-            <div className='field'>
-              <input
-                className='input is-normal is-warning'
-                placeholder='Search Podcast'
-                name='search'
-                onChange={handleChange}
-                value={whatUserTypes}
-              ></input>
-            </div>
-            <select name='selectList' id='selectList' onChange={handleClick}>
-              <option value='title'>Title</option>
-              <option value='description'>Description</option>
-              <option value='host'>Host</option>
-              <option value='guests'>Guests</option>
-              <option value='genre'>Genre</option>
-            </select>
-            {!whatUserTypes ? (
-              <div>no results</div>
-            ) : (
-              <section className='hero is-fullheight-with-navbar mt-6'>
-                <div className='hero-body'>
-                  <div className='container'>
-                    <div className='columns is-multiline'>
-                      <SearchByName
-                        key={whatUserTypes}
-                        userSearches={whatUserTypes}
-                        searchByField={searchField}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </section>
-            )}
-            {/* <div className='navbar-item'>
-              <div className='buttons' id='randomise'>
-                <Link to='/random' className='button is-warning'>
-                  <strong>Fetch Me A Podcast</strong>
-                </Link>
+            <div className='dropdown' onClick={handleIsActive}>
+              <div class='dropdown-trigger'>
+                <button
+                  class='button'
+                  aria-haspopup='true'
+                  aria-controls='dropdown-menu3'
+                >
+                  <span>Search by {capitalizeFirstLetter(searchField)}</span>
+                </button>
               </div>
-            </div> */}
+              <div class='dropdown-menu' id='dropdown-menu3' role='menu'>
+                <div
+                  class='dropdown-content'
+                  name='selectList'
+                  id='selectList'
+                  onClick={handleClick}
+                >
+                  <a value='title' class='dropdown-item'>
+                    Title
+                  </a>
+                  <a value='description' class='dropdown-item'>
+                    Description
+                  </a>
+                  <a value='host' class='dropdown-item'>
+                    Host
+                  </a>
+                  <a value='guests' class='dropdown-item'>
+                    Guests
+                  </a>
+                  <a value='genre' class='dropdown-item'>
+                    Genre
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='field'>
+            <input
+              className='input is-normal is-warning'
+              placeholder='Search'
+              name='search'
+              onChange={handleChange}
+              value={whatUserTypes}
+            ></input>
           </div>
         </div>
+        {!whatUserTypes ? (
+          <></>
+        ) : (
+          <section className='hero is-fullheight-with-navbar mt-6'>
+            <div className='hero-body'>
+              <div className='container'>
+                <div
+                  className='columns is-multiline'
+                >
+                  <SearchByName
+                    key={whatUserTypes}
+                    userSearches={whatUserTypes}
+                    searchByField={searchField}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </nav>
     </>
   );

@@ -22,9 +22,7 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
       ) : (
         podcast.map((item) => {
           return (
-            <>
-              <div key={item.title}>{item.title}</div>
-              <div key={item._id} className="column card">
+              <div key={item._id} className="column card is-one-fifth">
                 <Link
                   to={`/podcasts/${item._id}`}
                   onClick={
@@ -42,7 +40,6 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
                   </div>
                 </Link>
               </div>
-            </>
           );
         })
       )}
