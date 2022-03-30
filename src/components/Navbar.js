@@ -72,6 +72,11 @@ const Navbar = () => {
               Create New Podcast
             </Link>
           )}
+          {getLoggedInUserId() && (
+            <Link to='/mypodcasts/:id' className='navbar-item'>
+              My Podcasts
+            </Link>
+          )}
 
           <div className='navbar-end is-hidden-touch'>
             <div className='dropdown' onClick={handleIsActive}>

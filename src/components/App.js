@@ -11,6 +11,7 @@ import EditPodcast from './EditPodcast';
 import '../styles/style.scss';
 import Login from './auth/Login';
 import Register from './auth/Register';
+import MyPodcasts from './MyPodcasts';
 
 const App = () => (
   <BrowserRouter>
@@ -23,6 +24,7 @@ const App = () => (
       <Route path='/podcasts' element={<PodcastIndex />} />
       <Route path='/podcasts/:id' element={<PodcastCard />} />
       <Route path='createpodcast' element={<PodcastNew />} />
+      <Route path='/mypodcasts/:id' element={<MyPodcasts />} />
     </Routes>
   </BrowserRouter>
 );
