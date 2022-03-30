@@ -9,7 +9,9 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
       try {
         const { data } = await getPodcastByName(userSearches, searchByField);
         setPodcast(data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     getData();
   }, [userSearches, searchByField]);
@@ -22,24 +24,24 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
       ) : (
         podcast.map((item) => {
           return (
-              <div key={item._id} className="column card is-one-fifth">
-                <Link
-                  to={`/podcasts/${item._id}`}
-                  onClick={
-                    <Link
-                      to={`/podcast/${item._id}`}
-                      className="navbar-item"
-                    ></Link>
-                  }
-                >
-                  <h2 className="card-header">Title: {item.title}</h2>
-                  <div className="card-image">
-                    <figure className="image">
-                      <img src={item.img} alt={item.title} />
-                    </figure>
-                  </div>
-                </Link>
-              </div>
+            <div key={item._id} className="column card is-one-fifth">
+              <Link
+                to={`/podcasts/${item._id}`}
+                onClick={
+                  <Link
+                    to={`/podcast/${item._id}`}
+                    className="navbar-item"
+                  ></Link>
+                }
+              >
+                <h2 className="card-header">Title: {item.title}</h2>
+                <div className="card-image">
+                  <figure className="image">
+                    <img src={item.img} alt={item.title} />
+                  </figure>
+                </div>
+              </Link>
+            </div>
           );
         })
       )}

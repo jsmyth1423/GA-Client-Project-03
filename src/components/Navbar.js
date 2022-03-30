@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 import SearchByName from './SearchByName';
 
@@ -79,35 +79,35 @@ const Navbar = () => {
 
           <div className='navbar-end is-hidden-touch'>
             <div className='dropdown' onClick={handleIsActive}>
-              <div class='dropdown-trigger'>
+              <div className='dropdown-trigger'>
                 <button
-                  class='button'
+                  className='button'
                   aria-haspopup='true'
                   aria-controls='dropdown-menu3'
                 >
                   <span>Search by {capitalizeFirstLetter(searchField)}</span>
                 </button>
               </div>
-              <div class='dropdown-menu' id='dropdown-menu3' role='menu'>
+              <div className='dropdown-menu' id='dropdown-menu3' role='menu'>
                 <div
-                  class='dropdown-content'
+                  className='dropdown-content'
                   name='selectList'
                   id='selectList'
                   onClick={handleClick}
                 >
-                  <a value='title' class='dropdown-item'>
+                  <a value='title' className='dropdown-item'>
                     Title
                   </a>
-                  <a value='description' class='dropdown-item'>
+                  <a value='description' className='dropdown-item'>
                     Description
                   </a>
-                  <a value='host' class='dropdown-item'>
+                  <a value='host' className='dropdown-item'>
                     Host
                   </a>
-                  <a value='guests' class='dropdown-item'>
+                  <a value='guests' className='dropdown-item'>
                     Guests
                   </a>
-                  <a value='genre' class='dropdown-item'>
+                  <a value='genre' className='dropdown-item'>
                     Genre
                   </a>
                 </div>

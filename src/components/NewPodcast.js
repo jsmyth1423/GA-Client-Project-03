@@ -21,7 +21,7 @@ function PodcastNew() {
   function handleSelect(event) {
     setPodcast({
       ...podcast,
-      genre : event.target.id,
+      genre: event.target.id,
     });
   }
 
@@ -150,70 +150,70 @@ function PodcastNew() {
             </div>
             <div className='field'>
               <label className='label'>Genre</label>
-              <div className='dropdown' 
-              onClick={handleIsActive}
+              <div className='dropdown'
+                onClick={handleIsActive}
               >
-                <div class='dropdown-trigger'>
+                <div className='dropdown-trigger'>
                   <div
-                    class='button'
+                    className='button'
                     aria-haspopup='true'
                     aria-controls='dropdown-menu3'
                   >
                     <span>
-                      Selected Genre: 
+                      Selected Genre:
                       {capitalizeFirstLetter(podcast.genre)
                       }
-                      
+
                     </span>
                   </div>
                 </div>
-                <div class='dropdown-menu' id='dropdown-menu3' role='menu'>
+                <div className='dropdown-menu' id='dropdown-menu3' role='menu'>
                   <div
-                    class='dropdown-content'
+                    className='dropdown-content'
                     name='selectList'
                     id='selectList'
                     onClick={handleSelect}
                   >
-                    <a class='dropdown-item' id='arts'>
+                    <a className='dropdown-item' id='arts'>
                       Arts &amp; Entertainment
                     </a>
-                    <a class='dropdown-item' id='business'>
+                    <a className='dropdown-item' id='business'>
                       Business &amp; Investment
                     </a>
-                    <a class='dropdown-item' id='comedy'>
+                    <a className='dropdown-item' id='comedy'>
                       Comedy
                     </a>
-                    <a class='dropdown-item' id='crime'>
+                    <a className='dropdown-item' id='crime'>
                       Crime
                     </a>
-                    <a class='dropdown-item' id='culture'>
+                    <a className='dropdown-item' id='culture'>
                       Culture
                     </a>
-                    <a class='dropdown-item' id='environment'>
+                    <a className='dropdown-item' id='environment'>
                       Environment/Science
                     </a>
-                    <a class='dropdown-item' id='food'>
+                    <a className='dropdown-item' id='food'>
                       Food &amp; Drink
                     </a>
-                    <a class='dropdown-item' id='health'>
+                    <a className='dropdown-item' id='health'>
                       Health
                     </a>
-                    <a class='dropdown-item' id='miscellaneous'>
+                    <a className='dropdown-item' id='miscellaneous'>
                       Miscellaneous
                     </a>
-                    <a class='dropdown-item' id='news'>
+                    <a className='dropdown-item' id='news'>
                       News &amp; Current Affairs
                     </a>
-                    <a class='dropdown-item' id='politics'>
+                    <a className='dropdown-item' id='politics'>
                       Politics
                     </a>
-                    <a class='dropdown-item' id='sports'>
+                    <a className='dropdown-item' id='sports'>
                       Sports
                     </a>
-                    <a class='dropdown-item' id='technology'>
+                    <a className='dropdown-item' id='technology'>
                       Technology
                     </a>
-                    <a class='dropdown-item' id='travel'>
+                    <a className='dropdown-item' id='travel'>
                       Travel
                     </a>
                   </div>
