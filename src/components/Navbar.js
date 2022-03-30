@@ -19,7 +19,6 @@ const Navbar = () => {
   }
 
   function handleClick(event) {
-    console.log(event.target.innerText.toLowerCase());
     const searchByValue = event.target.innerText.toLowerCase();
     setSearchField(searchByValue);
     setWhatUserTypes('');
@@ -73,7 +72,7 @@ const Navbar = () => {
             </Link>
           )}
           {getLoggedInUserId() && (
-            <Link to='/mypodcasts/:id' className='navbar-item'>
+            <Link to={`/mypodcasts/${getLoggedInUserId()}`} className='navbar-item'>
               My Podcasts
             </Link>
           )}
