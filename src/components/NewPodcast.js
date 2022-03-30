@@ -19,7 +19,6 @@ function PodcastNew() {
     setPodcast({ ...podcast, [event.target.name]: event.target.value });
   }
   function handleSelect(event) {
-    console.log(event.target);
     setPodcast({
       ...podcast,
       [event.target.selectedOptions]: event.target.selectedOptions.value,

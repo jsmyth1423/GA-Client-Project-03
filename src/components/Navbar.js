@@ -19,7 +19,6 @@ const Navbar = () => {
   }
 
   function handleClick(event) {
-    console.log(event.target.innerText.toLowerCase());
     const searchByValue = event.target.innerText.toLowerCase();
     setSearchField(searchByValue);
     setWhatUserTypes('');

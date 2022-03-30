@@ -12,7 +12,7 @@ const PodcastCard = () => {
   const [podcast, setPodcast] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
   const [text, setText] = React.useState();
-  
+
   const like = (
     <button
       type='button'
@@ -36,18 +36,20 @@ const PodcastCard = () => {
       try {
         const userId = await getLoggedInUserId();
         const getUserInfo = await getUser(userId);
-        const likedPodcast = getUserInfo.likedPodcasts.toString();
-        if (likedPodcast.includes(id)) {
-          setText(unlike);
-        } else {
-          setText(like);
-        }
+        const likedPodcast = getUserInfo.likedPodcasts;
+        likedPodcast.map((podcast) => {
+          if (podcast._id.includes(id)) {
+            setText(unlike);
+          } else {
+            setText(like);
+          }
+        });
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     setLikeOnRefresh();
-  }, [])
+  }, []);
 
   React.useEffect(() => {
     const getData = async () => {
@@ -80,7 +82,7 @@ const PodcastCard = () => {
         // text = 'Podcast Deleted';
         await deletePodcast(podcastId);
         navigate('/podcasts');
-      } 
+      }
     } catch (err) {
       console.log(err);
     }
@@ -101,9 +103,9 @@ const PodcastCard = () => {
     }
   };
 
- 
 
-  
+
+
 
   if (!podcast) {
     return <p>loading...</p>;
@@ -172,7 +174,6 @@ const PodcastCard = () => {
 
           <div>
             {podcast.comments.map((comment) => {
-              console.log(comment.text, getLoggedInUserId(), comment.createdBy);
               return (
                 <div key={comment._id}>
                   <p>{comment.text}</p>

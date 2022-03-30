@@ -2,39 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 import { getUser } from '../api/auth';
-import { getPodcastById } from '../api/podcasts';
 
 const MyPodcasts = () => {
   const [userObject, setUserObject] = React.useState(null);
-  const [likedPodcastsIds, setLikedPodcastsIds] = React.useState([]);
-  const [likedPodcastsArray, setLikedPodcastsArray] = React.useState(null);
+  const [likedPodcastsArray, setLikedPodcastsArray] = React.useState([]);
 
   React.useEffect(() => {
     const getData = async () => {
       const userId = getLoggedInUserId();
       const userObject = await getUser(userId);
       setUserObject(userObject);
-
-      const likedPodcastsIds = userObject.likedPodcasts;
-      setLikedPodcastsIds(likedPodcastsIds);
-
-      likedPodcastsIds.map(podcastId => {
-        const likedPodcastsArray = getPodcastById(podcastId);
-        setLikedPodcastsArray(likedPodcastsArray);
-        console.log(likedPodcastsArray);
-      });
-
+      const likedPodcastsArray = userObject.likedPodcasts;
+      setLikedPodcastsArray(likedPodcastsArray);
     };
     getData();
   }, []);
 
-  // React.useEffect(() => {
-  //   likedPodcastsIds.map(podcastId => {
-  //     const likedPodcastsArray = getPodcastById(podcastId);
-  //     setLikedPodcastsArray(likedPodcastsArray);
-  //     console.log(likedPodcastsArray);
-  //   });
-  // }, [changed]);
 
   if (!userObject) {
     return <p>loading...</p>;
@@ -45,10 +28,11 @@ const MyPodcasts = () => {
       <section>
         <div className='container is-dark'>
           <div className='columns is-multiline' >
-            {/* {likedPodcastsArray.map((item) => (
+            <h2>Here are your liked Podcasts:</h2>
+            {likedPodcastsArray.map((item) => (
               <div
                 key={item._id}
-                className='column card  is-one-fifth '
+                className='column card m-4  is-one-fifth '
               >
                 <Link to={`/podcasts/${item._id}`}>
                   <h2 className='card-header'>{item.title}</h2>
@@ -59,7 +43,7 @@ const MyPodcasts = () => {
                   </div>
                 </Link>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
       </section>
