@@ -73,7 +73,7 @@ const Navbar = () => {
             </Link>
           )}
           {getLoggedInUserId() && (
-            <Link to='/mypodcasts/:id' className='navbar-item'>
+            <Link to={`/mypodcasts/${getLoggedInUserId()}`} className='navbar-item'>
               My Podcasts
             </Link>
           )}
