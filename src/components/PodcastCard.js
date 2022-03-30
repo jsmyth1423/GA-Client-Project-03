@@ -11,37 +11,38 @@ const PodcastCard = () => {
   const { id } = useParams();
   const [podcast, setPodcast] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
-  const [text, setText] = React.useState();
+  const [userLiked, setUserLiked] = React.useState(false);
 
-  const like = (
-    <button
-      type='button'
-      className='button is-success mt-4'
-      onClick={handleLikePodcast}
-    >
-      Like 
-    </button>
-  );
-  const unlike = (
-    <button
-      type='button'
-      className='button is-danger mt-4'
-      onClick={handleLikePodcast}
-    >
-      Unlike
-    </button>
-  );
+  // const like = (
+  //   <button
+  //     type='button'
+  //     className='button is-success mt-4'
+  //     onClick={handleLikePodcast}
+  //   >
+  //     Like 
+  //   </button>
+  // );
+  // const unlike = (
+  //   <button
+  //     type='button'
+  //     className='button is-danger mt-4'
+  //     onClick={handleLikePodcast}
+  //   >
+  //     Unlike
+  //   </button>
+  // );
   React.useEffect(() => {
     const setLikeOnRefresh = async () => {
       try {
         const userId = await getLoggedInUserId();
         const getUserInfo = await getUser(userId);
         const likedPodcast = getUserInfo.likedPodcasts;
-        likedPodcast.map((podcast) => {
-          if (podcast._id.includes(id)) {
-            setText(unlike);
+        likedPodcast.map((item) => {
+          if (item._id == id) {
+            setUserLiked(true);
+            
           } else {
-            setText(like);
+            setUserLiked(false);
           }
         });
       } catch (err) {
@@ -89,14 +90,17 @@ const PodcastCard = () => {
   };
 
   const handleLikePodcast = async () => {
+    console.log('handleLikePodcast')
     try {
       const userId = await getLoggedInUserId();
-      const ok = await updateUser(userId, id);
-      const likedStatus = ok.data.likedPodcasts.toString();
-      if (likedStatus.includes(id)) {
-        setText(unlike);
+      const user = await updateUser(userId, id);
+      const userHasLiked = user.data.likedPodcasts.includes(id);
+      console.log('user', user, id)
+      console.log('userhasLiked', userHasLiked)
+      if (userHasLiked) {
+        setUserLiked(false);
       } else {
-        setText(like);
+        setUserLiked(true);
       }
     } catch (err) {
       console.log(err);
@@ -135,9 +139,19 @@ const PodcastCard = () => {
               Update Podcast
             </button>
           )}
-          {getLoggedInUserId() === podcast.createdBy && (
-            <div onClick={handleLikePodcast}>{text}</div>
-          )}
+
+          {getLoggedInUserId() &&
+            
+              <button
+                type='button'
+                className={`button  ${userLiked ? 'is-danger' : 'is-success'} mt-4`}
+                onClick={handleLikePodcast}
+              >
+                {userLiked ? 'Unlike' : 'Like'}
+              </button>
+}
+
+          
         </div>
         <div className='column is-half'>
           <div className='card'>
