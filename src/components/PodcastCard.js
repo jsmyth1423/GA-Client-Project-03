@@ -37,12 +37,9 @@ const PodcastCard = () => {
         const userId = await getLoggedInUserId();
         const getUserInfo = await getUser(userId);
         const likedPodcast = getUserInfo.likedPodcasts.toString();
-
         if (likedPodcast.includes(id)) {
-          console.log('liked is the same')
           setText(unlike);
         } else {
-          console.log('liked are not the same');
           setText(like);
         }
       } catch (err) {
@@ -104,7 +101,7 @@ const PodcastCard = () => {
     }
   };
 
-  // const setLikeOnRefresh = async () => {
+ 
 
   
 
