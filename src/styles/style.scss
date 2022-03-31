@@ -122,28 +122,63 @@ h3 {
 .fontstyling {
   color: white;
 }
-.loader-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: #fff;
-    opacity: 0;
-    z-index: -1;
-    transition: opacity .3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
 
-        .loader {
-            height: 80px;
-            width: 80px;
-        }
 
-    &.is-active {
-        opacity: 1;
-        z-index: 1;
-    }
+.is-multiline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.hero.is-fullheight-with-navbar.mt-6 {
+  background-color: blue;
+  // background-image: 
+}
+
+
+.column.card.is-one-fifth.mt-2.mx-2.mb-2 {
+  height: 310px;
+  font-size: 18px;
+
+}
+
+
+.no-results {
+  background-image: url('https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1200px;
+}
+
+.hero.is-fullheight-with-navbar.mt-6 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -50px;
+}
+
+#noresults {
+  color: black;
+  font-size: 60px;
+
+  border: 2px solid white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  padding: 5px 30px;
+
+
+}
+
+
+.putsome {
+  padding-top: 7px;
+}
+
+.changethis {
+  height: 310px;
+  font-size: 18px;
 }

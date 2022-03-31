@@ -18,17 +18,14 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
 
   return (
     <>
-      <body className='searched-pod'>
         {!podcast.length ? (
-          <><div class='loader-wrapper'>
-            <div class='loader is-loading'></div>
-          </div><p>No Results</p></>
+          <p id='noresults'>No Results</p>
         ) : (
           podcast.map((item) => {
             return (
               <div
                 key={item._id}
-                className='column card is-one-fifth mt-2 mx-1'
+                className='column card is-one-fifth mt-2 mx-2 mb-2'
               >
                 <Link
                   to={`/podcasts/${item._id}`}
@@ -40,7 +37,7 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
                   }
                 >
                   <h2 className='card-header'>{item.title}</h2>
-                  <div className='card-image'>
+                  <div className='card-image putsome'>
                     <figure className='image is-1by1'>
                       <img src={item.img} alt={item.title} />
                     </figure>
@@ -50,7 +47,6 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
             );
           })
         )}
-      </body>
     </>
   );
 };

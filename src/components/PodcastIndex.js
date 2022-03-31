@@ -23,7 +23,7 @@ const PodcastIndex = () => {
               {podcasts.map((podcast) => (
                 <div
                   key={podcast._id}
-                  className='column card  is-one-fifth '
+                  className='column card  is-one-fifth changethis'
                   id='podcast-card'
                 >
                   <Link to={`/podcasts/${podcast._id}`}>

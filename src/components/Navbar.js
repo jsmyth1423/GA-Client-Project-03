@@ -147,7 +147,7 @@ const Navbar = () => {
           <></>
         ) : (
           <section className='hero is-fullheight-with-navbar mt-6'>
-            <div className='hero-body'>
+            <div className='hero-body no-results'>
               <div className='container'>
                 <div className='columns is-multiline'>
                   <SearchByName
