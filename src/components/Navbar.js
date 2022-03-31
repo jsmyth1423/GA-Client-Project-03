@@ -46,16 +46,28 @@ const Navbar = () => {
       <nav>
         <div className='navbar-brand is-mobile'>
           <Link to='/' className='navbar-item'>
-            Home
+            <p>Home</p>
+            <span class='icon'>
+              <i class='fas fa-home'></i>
+            </span>
           </Link>
           <Link to='/podcasts' className='navbar-item'>
-            Podcasts
+            <p>Podcasts</p>
+            <span class='icon'>
+              <i class='fas fa-headphones'></i>
+            </span>
           </Link>
           <Link to='/login' className='navbar-item'>
-            Login
+            <p>Login</p>
+            <span class='icon'>
+              <i class='fas fa-lock'></i>
+            </span>
           </Link>
           <Link to='/register' className='navbar-item'>
-            Register
+            <p>Register</p>
+            <span class='icon'>
+              <i class='fas fa-user'></i>
+            </span>
           </Link>
 
           {getLoggedInUserId() && (
@@ -86,7 +98,10 @@ const Navbar = () => {
                   aria-haspopup='true'
                   aria-controls='dropdown-menu3'
                 >
-                  <span>Search by {capitalizeFirstLetter(searchField)}</span>
+                  <span>Search by: {capitalizeFirstLetter(searchField)}</span>
+                  <span class='icon is-small'>
+                    <i class='fas fa-angle-down' aria-hidden='true'></i>
+                  </span>
                 </button>
               </div>
               <div className='dropdown-menu' id='dropdown-menu3' role='menu'>
