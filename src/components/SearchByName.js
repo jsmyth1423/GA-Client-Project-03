@@ -20,7 +20,9 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
     <>
       <body className='searched-pod'>
         {!podcast.length ? (
-          <>Loading...or no results</>
+          <><div class='loader-wrapper'>
+            <div class='loader is-loading'></div>
+          </div><p>No Results</p></>
         ) : (
           podcast.map((item) => {
             return (

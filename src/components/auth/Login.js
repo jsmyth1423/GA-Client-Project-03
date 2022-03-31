@@ -40,31 +40,41 @@ const Login = () => {
               <label htmlFor='email' className='label'>
                 Email
               </label>
-              <div className='control'>
+              <p class='control has-icons-left has-icons-right'>
                 <input
-                  type='text'
-                  className='input'
-                  id='email'
+                  class='input'
+                  type='email'
+                  placeholder='Email'
                   value={emailValue}
                   onChange={handleEmailChange}
+                  id='email'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-envelope'></i>
+                </span>
+                <span class='icon is-small is-right'>
+                  <i class='fas fa-check'></i>
+                </span>
+              </p>
             </div>
             <div className='field'>
               <label htmlFor='password' className='label'>
                 Password
               </label>
-              <div className='control'>
+              <p class='control has-icons-left'>
                 <input
+                  class='input'
                   type='password'
-                  className='input'
-                  id='password'
+                  placeholder='Password'
                   value={passwordValue}
                   onChange={handlePasswordChange}
+                  id='password'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-lock'></i>
+                </span>
+              </p>
             </div>
-
             <button
               className='button is-primary is-fullwidth'
               type='submit'
