@@ -60,7 +60,7 @@ const Register = () => {
                   id='username'
                 />
                 <span class='icon is-small is-left'>
-                  <i class='fas fa-envelope'></i>
+                  <i class='fas fa-user'></i>
                 </span>
                 <span class='icon is-small is-right'>
                   <i class='fas fa-check'></i>

@@ -24,6 +24,10 @@ const Navbar = () => {
     setWhatUserTypes('');
   }
 
+  function resetSearchBar(event) {
+    setWhatUserTypes('');
+  }
+
   function handleIsActive(event) {
     event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle(
       'is-active'
@@ -45,36 +49,45 @@ const Navbar = () => {
     <>
       <nav className='navbar-wrapper'>
         <div className='navbar-brand is-mobile'>
-          <Link to='/' className='navbar-item'>
+          <Link to='/' className='navbar-item' onClick={resetSearchBar}>
             <p className='fontstyling'>Home</p>
             <span class='icon'>
-              <i class='fas fa-home'></i>
+              <i class='fas fa-home has-text-white'></i>
             </span>
           </Link>
-          <Link to='/podcasts' className='navbar-item'>
+          <Link to='/podcasts' className='navbar-item' onClick={resetSearchBar}>
             <p className='fontstyling'>Podcasts</p>
             <span class='icon'>
-              <i class='fas fa-headphones'></i>
+              <i class='fas fa-headphones has-text-white'></i>
             </span>
           </Link>
           {!getLoggedInUserId() && (
-            <Link to='/login' className='navbar-item'>
-            <p className='fontstyling'>Login</p>
-            <span class='icon'>
-              <i class='fas fa-lock'></i>
-            </span>
-          </Link>
+            <Link to='/login' className='navbar-item' onClick={resetSearchBar}>
+              <p className='fontstyling'>Login</p>
+              <span class='icon'>
+                <i class='fas fa-lock has-text-white'></i>
+              </span>
+            </Link>
           )}
-          {!getLoggedInUserId() && (<Link to='/register' className='navbar-item'>
-            <p className='fontstyling'>Register</p>
-            <span class='icon'>
-              <i class='fas fa-user'></i>
-            </span>
-          </Link>
+          {!getLoggedInUserId() && (
+            <Link
+              to='/register'
+              className='navbar-item'
+              onClick={resetSearchBar}
+            >
+              <p className='fontstyling'>Register</p>
+              <span class='icon'>
+                <i class='fas fa-user has-text-white'></i>
+              </span>
+            </Link>
           )}
 
           {getLoggedInUserId() && (
-            <Link to='/createpodcast' className='navbar-item'>
+            <Link
+              to='/createpodcast'
+              className='navbar-item'
+              onClick={resetSearchBar}
+            >
               <p className='fontstyling'>Create New Podcast</p>
             </Link>
           )}
@@ -82,6 +95,7 @@ const Navbar = () => {
             <Link
               to={`/mypodcasts/${getLoggedInUserId()}`}
               className='navbar-item'
+              onClick={resetSearchBar}
             >
               <p className='fontstyling'>My Podcasts</p>
             </Link>
@@ -90,7 +104,9 @@ const Navbar = () => {
           <div className='navbar-end'>
             {getLoggedInUserId() && (
               <Link to='/' className='navbar-item' id='logout' onClick={logout}>
-                <p className='fontstyling'>Logout</p>
+                <p onClick={resetSearchBar} className='fontstyling'>
+                  Logout
+                </p>
               </Link>
             )}
             <br />
