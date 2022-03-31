@@ -46,33 +46,36 @@ const Navbar = () => {
       <nav>
         <div className='navbar-brand is-mobile'>
           <Link to='/' className='navbar-item'>
-            <p>Home</p>
+            <p className='fontstyling'>Home</p>
             <span class='icon'>
               <i class='fas fa-home'></i>
             </span>
           </Link>
           <Link to='/podcasts' className='navbar-item'>
-            <p>Podcasts</p>
+            <p className='fontstyling'>Podcasts</p>
             <span class='icon'>
               <i class='fas fa-headphones'></i>
             </span>
           </Link>
-          <Link to='/login' className='navbar-item'>
-            <p>Login</p>
+          {!getLoggedInUserId() && (
+            <Link to='/login' className='navbar-item'>
+            <p className='fontstyling'>Login</p>
             <span class='icon'>
               <i class='fas fa-lock'></i>
             </span>
           </Link>
-          <Link to='/register' className='navbar-item'>
-            <p>Register</p>
+          )}
+          {!getLoggedInUserId() && (<Link to='/register' className='navbar-item'>
+            <p className='fontstyling'>Register</p>
             <span class='icon'>
               <i class='fas fa-user'></i>
             </span>
           </Link>
+          )}
 
           {getLoggedInUserId() && (
             <Link to='/createpodcast' className='navbar-item'>
-              Create New Podcast
+              <p className='fontstyling'>Create New Podcast</p>
             </Link>
           )}
           {getLoggedInUserId() && (
@@ -80,14 +83,14 @@ const Navbar = () => {
               to={`/mypodcasts/${getLoggedInUserId()}`}
               className='navbar-item'
             >
-              My Podcasts
+              <p className='fontstyling'>My Podcasts</p>
             </Link>
           )}
 
           <div className='navbar-end'>
             {getLoggedInUserId() && (
               <Link to='/' className='navbar-item' id='logout' onClick={logout}>
-                Logout
+                <p className='fontstyling'>Logout</p>
               </Link>
             )}
             <br />

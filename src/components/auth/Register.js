@@ -50,57 +50,85 @@ const Register = () => {
               <label htmlFor='username' className='label'>
                 Username
               </label>
-              <div className='control'>
+              <p class='control has-icons-left has-icons-right'>
                 <input
-                  type='text'
-                  className='input'
-                  id='email'
+                  class='input'
+                  type='username'
+                  placeholder='Username'
                   value={usernameValue}
                   onChange={handleUsernameChange}
+                  id='username'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-envelope'></i>
+                </span>
+                <span class='icon is-small is-right'>
+                  <i class='fas fa-check'></i>
+                </span>
+              </p>
             </div>
             <div className='field'>
               <label htmlFor='email' className='label'>
                 Email
               </label>
-              <div className='control'>
+              <p class='control has-icons-left has-icons-right'>
                 <input
-                  type='text'
-                  className='input'
-                  id='email'
+                  class='input'
+                  type='email'
+                  placeholder='Email'
                   value={emailValue}
                   onChange={handleEmailChange}
+                  id='email'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-envelope'></i>
+                </span>
+                <span class='icon is-small is-right'>
+                  <i class='fas fa-check'></i>
+                </span>
+              </p>
             </div>
             <div className='field'>
               <label htmlFor='password' className='label'>
                 Password
               </label>
-              <div className='control'>
+              <p class='control has-icons-left has-icons-right'>
                 <input
+                  class='input'
                   type='password'
-                  className='input'
-                  id='password'
+                  placeholder='Password'
                   value={passwordValue}
                   onChange={handlePasswordChange}
+                  id='password'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-lock'></i>
+                </span>
+                <span class='icon is-small is-right'>
+                  <i class='fas fa-check'></i>
+                </span>
+              </p>
             </div>
             <div className='field'>
               <label htmlFor='passwordConfirmation' className='label'>
                 Password Confirmation
               </label>
-              <div className='control'>
+              <p class='control has-icons-left has-icons-right'>
                 <input
+                  class='input'
                   type='password'
-                  className='input'
-                  id='password-confirmation'
+                  placeholder='Confirm Password'
                   value={confirmPasswordValue}
                   onChange={handleConfirmPasswordChange}
+                  id='password-confirmation'
                 />
-              </div>
+                <span class='icon is-small is-left'>
+                  <i class='fas fa-lock'></i>
+                </span>
+                <span class='icon is-small is-right'>
+                  <i class='fas fa-check'></i>
+                </span>
+              </p>
             </div>
 
             <button

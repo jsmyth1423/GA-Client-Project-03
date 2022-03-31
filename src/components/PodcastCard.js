@@ -101,7 +101,9 @@ const PodcastCard = () => {
   }
 
   if (!podcast) {
-    return <p>loading...</p>;
+    return (
+    <p>loading...</p>
+    )
   }
   return (
     <div className='container mt-6'>
