@@ -150,9 +150,7 @@ function PodcastNew() {
             </div>
             <div className='field'>
               <label className='label'>Genre</label>
-              <div className='dropdown'
-                onClick={handleIsActive}
-              >
+              <div className='dropdown' onClick={handleIsActive}>
                 <div className='dropdown-trigger'>
                   <div
                     className='button'
@@ -160,10 +158,10 @@ function PodcastNew() {
                     aria-controls='dropdown-menu3'
                   >
                     <span>
-                      Selected Genre:
-                      {capitalizeFirstLetter(podcast.genre)
-                      }
-
+                      Selected Genre: {capitalizeFirstLetter(podcast.genre)}
+                    </span>
+                    <span class='icon is-small'>
+                      <i class='fas fa-angle-down' aria-hidden='true'></i>
                     </span>
                   </div>
                 </div>
@@ -223,10 +221,13 @@ function PodcastNew() {
             <div className='field'>
               <button
                 type='submit'
-                className='button is-danger is-fullwidth'
+                className='button is-success is-fullwidth'
                 onSubmit={handleSubmit}
               >
-                Make my Podcast!
+                <p>Make my Podcast!</p>
+                <span class='icon'>
+                  <i class='icon fas fa-check-circle'></i>
+                </span>
               </button>
             </div>
           </form>

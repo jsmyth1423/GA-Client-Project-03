@@ -103,11 +103,16 @@ const Register = () => {
               </div>
             </div>
 
-            <input
+            <button
               className='button is-primary is-fullwidth'
               type='submit'
               value='Register'
-            />
+            >
+              <p>Register</p>
+              <span class='icon'>
+                <i class='fas fa-user'></i>
+              </span>
+            </button>
           </form>
         </div>
       </body>

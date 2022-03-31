@@ -65,11 +65,16 @@ const Login = () => {
               </div>
             </div>
 
-            <input
+            <button
               className='button is-primary is-fullwidth'
               type='submit'
               value='Login'
-            />
+            >
+              <p>Login</p>
+              <span class='icon'>
+                <i class='fas fa-lock'></i>
+              </span>
+            </button>
           </form>
         </div>
       </body>

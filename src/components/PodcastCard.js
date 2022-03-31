@@ -18,6 +18,8 @@ const PodcastCard = () => {
   const [commentValue, setCommentValue] = React.useState('');
   const [userLiked, setUserLiked] = React.useState(true);
   const userId = getLoggedInUserId();
+  const [rating, setRating] = React.useState(5)
+  const [userObject, setUserObject] = React.useState('')
 
   React.useEffect(() => {
     const getDataAndUpdate = async () => {
@@ -25,10 +27,9 @@ const PodcastCard = () => {
         const podcast = await getPodcastById(id);
         setPodcast(podcast);
         const user = await getUser(userId);
-
-        
         setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
-
+        console.log(user.username)
+        setUserObject(user)
       } catch (error) {
         console.error(error);
       }
@@ -42,7 +43,10 @@ const PodcastCard = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    const data = await createComment(id, { text: commentValue, rating: 3 });
+    const data = await createComment(id, {
+      text: commentValue,
+      rating: rating,
+    });
     setCommentValue('');
     setPodcast(data);
   };
@@ -54,7 +58,6 @@ const PodcastCard = () => {
 
   const handlePodcastDelete = async (podcastId) => {
     try {
-      // window.confirm('Are you sure you want to delete this podcast? ')
       if (
         confirm(
           'Are you sure you want to delete the podcast? Press OK to continue!'
@@ -69,6 +72,19 @@ const PodcastCard = () => {
     }
   };
 
+  function handleIsActive(event) {
+    event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.parentElement.classList.toggle(
+      'is-active'
+    );
+    event.target.parentElement.parentElement.classList.toggle('is-active');
+  }
+
   const handleLikePodcast = async () => {
     try {
       const userId = await getLoggedInUserId();
@@ -79,6 +95,10 @@ const PodcastCard = () => {
       console.log(err);
     }
   };
+
+  function handleSelect(event) {
+    setRating(event.target.innerText)
+  }
 
   if (!podcast) {
     return <p>loading...</p>;
@@ -96,7 +116,10 @@ const PodcastCard = () => {
               className='button is-danger mt-4'
               onClick={() => handlePodcastDelete(podcast._id)}
             >
-              Delete Podcast
+              <p>Delete Podcast</p>
+              <span class='icon'>
+                <i class='icon fas fa-ban'></i>
+              </span>
             </button>
           )}
           {getLoggedInUserId() === podcast.createdBy && (
@@ -105,7 +128,10 @@ const PodcastCard = () => {
               className='button is-warning m-4'
               onClick={() => navigate(`/podcasts/${podcast._id}/edit`)}
             >
-              Update Podcast
+              <p>Update Podcast</p>
+              <span class='icon'>
+                <i class='icon fas fa-info-circle'></i>
+              </span>
             </button>
           )}
 
@@ -145,12 +171,55 @@ const PodcastCard = () => {
                     onChange={handleCommentChange}
                   />
                 </div>
+
+                <div className='dropdown' onClick={handleIsActive}>
+                  <div className='dropdown-trigger'>
+                    <div
+                      className='button'
+                      aria-haspopup='true'
+                      aria-controls='dropdown-menu3'
+                    >
+                      <span>Select Rating: {rating}</span>
+                    </div>
+                  </div>
+                  <div
+                    className='dropdown-menu'
+                    id='dropdown-menu3'
+                    role='menu'
+                  >
+                    <div
+                      className='dropdown-content'
+                      name='selectList'
+                      id='selectList'
+                      onClick={handleSelect}
+                    >
+                      <a className='dropdown-item'>1</a>
+                      <a className='dropdown-item' id='business'>
+                        2
+                      </a>
+                      <a className='dropdown-item' id='comedy'>
+                        3
+                      </a>
+                      <a className='dropdown-item' id='crime'>
+                        4
+                      </a>
+                      <a className='dropdown-item' id='culture'>
+                        5
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <input
+              <button
                 type='submit'
                 className='button is-info mt-4'
-                value='Submit'
-              />
+                value='Submit Comment'
+              >
+                <p>Submit Comment</p>
+                <span class='icon'>
+                  <i class='fas fa-reply'></i>
+                </span>
+              </button>
             </form>
           )}
 
@@ -158,16 +227,22 @@ const PodcastCard = () => {
             {podcast.comments.map((comment) => {
               return (
                 <div key={comment._id}>
+                  <p>{userObject.username} commented:</p>
                   <p>{comment.text}</p>
                   <p>{comment.rating}</p>
                   {getLoggedInUserId() === comment.createdBy && (
-                    <button
-                      type='button'
-                      className='button is-danger'
-                      onClick={() => handleCommentDelete(comment._id)}
-                    >
-                      Delete Comment
-                    </button>
+                    <>
+                      <button
+                        type='button'
+                        className='button is-danger'
+                        onClick={() => handleCommentDelete(comment._id)}
+                      >
+                        <p>Remove comment</p>
+                        <span class='icon'>
+                          <i class='icon fas fa-ban'></i>
+                        </span>
+                      </button>
+                    </>
                   )}
                 </div>
               );
