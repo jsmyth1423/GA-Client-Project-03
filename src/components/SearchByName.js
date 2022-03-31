@@ -18,32 +18,37 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
 
   return (
     <>
-      {!podcast.length ? (
-        <>Loading...or no results</>
-      ) : (
-        podcast.map((item) => {
-          return (
-            <div key={item._id} className='column card is-one-fifth'>
-              <Link
-                to={`/podcasts/${item._id}`}
-                onClick={
-                  <Link
-                    to={`/podcast/${item._id}`}
-                    className='navbar-item'
-                  ></Link>
-                }
+      <body className='searched-pod'>
+        {!podcast.length ? (
+          <>Loading...or no results</>
+        ) : (
+          podcast.map((item) => {
+            return (
+              <div
+                key={item._id}
+                className='column card is-one-fifth mt-2 mx-1'
               >
-                <h2 className='card-header'>{item.title}</h2>
-                <div className='card-image'>
-                  <figure className='image is-1by1'>
-                    <img src={item.img} alt={item.title} />
-                  </figure>
-                </div>
-              </Link>
-            </div>
-          );
-        })
-      )}
+                <Link
+                  to={`/podcasts/${item._id}`}
+                  onClick={
+                    <Link
+                      to={`/podcast/${item._id}`}
+                      className='navbar-item'
+                    ></Link>
+                  }
+                >
+                  <h2 className='card-header'>{item.title}</h2>
+                  <div className='card-image'>
+                    <figure className='image is-1by1'>
+                      <img src={item.img} alt={item.title} />
+                    </figure>
+                  </div>
+                </Link>
+              </div>
+            );
+          })
+        )}
+      </body>
     </>
   );
 };

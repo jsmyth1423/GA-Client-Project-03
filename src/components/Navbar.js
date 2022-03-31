@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className='navbar-brand'>
+        <div className='navbar-brand is-mobile'>
           <Link to='/' className='navbar-item'>
             Home
           </Link>
@@ -57,11 +57,7 @@ const Navbar = () => {
           <Link to='/register' className='navbar-item'>
             Register
           </Link>
-          {getLoggedInUserId() && (
-            <Link to='/' className='navbar-item' onClick={logout}>
-              Logout
-            </Link>
-          )}
+
           {getLoggedInUserId() && (
             <Link to='/createpodcast' className='navbar-item'>
               Create New Podcast
@@ -76,7 +72,13 @@ const Navbar = () => {
             </Link>
           )}
 
-          <div className='navbar-end is-hidden-touch'>
+          <div className='navbar-end'>
+            {getLoggedInUserId() && (
+              <Link to='/' className='navbar-item' id='logout' onClick={logout}>
+                Logout
+              </Link>
+            )}
+            <br />
             <div className='dropdown' onClick={handleIsActive}>
               <div className='dropdown-trigger'>
                 <button
@@ -113,7 +115,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className='field'>
+          <div className='field' id='search-bar'>
             <input
               className='input is-normal is-warning'
               placeholder='Search'
