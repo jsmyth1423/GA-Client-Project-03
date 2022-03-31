@@ -18,8 +18,8 @@ const PodcastCard = () => {
   const [commentValue, setCommentValue] = React.useState('');
   const [userLiked, setUserLiked] = React.useState(true);
   const userId = getLoggedInUserId();
-  const [rating, setRating] = React.useState(5)
-  const [userObject, setUserObject] = React.useState('')
+  const [rating, setRating] = React.useState(5);
+  const [userObject, setUserObject] = React.useState('');
 
   React.useEffect(() => {
     const getDataAndUpdate = async () => {
@@ -28,8 +28,8 @@ const PodcastCard = () => {
         setPodcast(podcast);
         const user = await getUser(userId);
         setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
-        console.log(user.username)
-        setUserObject(user)
+        console.log(user.username);
+        setUserObject(user);
       } catch (error) {
         console.error(error);
       }
@@ -97,7 +97,7 @@ const PodcastCard = () => {
   };
 
   function handleSelect(event) {
-    setRating(event.target.innerText)
+    setRating(event.target.innerText);
   }
 
   if (!podcast) {
@@ -138,9 +138,8 @@ const PodcastCard = () => {
           {getLoggedInUserId() && (
             <button
               type='button'
-              className={`button  ${
-                userLiked ? 'is-danger' : 'is-success'
-              } mt-4`}
+              className={`button  ${userLiked ? 'is-danger' : 'is-success'
+                } mt-4`}
               onClick={handleLikePodcast}
             >
               {userLiked ? 'Unlike' : 'Like'}
