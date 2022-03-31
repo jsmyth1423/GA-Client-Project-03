@@ -25,9 +25,8 @@ const MyPodcasts = () => {
   return (
     <>
       <section className='hero' id='mypodcasts-wrapper'>
-        <h1 className='title has-text-centered welcome-msg'>Hello {userObject.username}, welcome to your page</h1>
-        <section>
-          <h1>Here are your liked Podcasts:</h1>
+        <section className='addAnImage'>
+        <h1 className='title has-text-centered welcome-msg'>Hello {userObject.username}, welcome to your liked podcasts!</h1>
           <div className='container is-dark mb-6'>
             <div className='columns is-multiline' >
               {likedPodcastsArray.map((item) => (
@@ -38,7 +37,7 @@ const MyPodcasts = () => {
                   <Link to={`/podcasts/${item._id}`}>
                     <h2 className='card-header'>{item.title}</h2>
                     <div className='card-image'>
-                      <figure className='image'>
+                      <figure className='image is-1by1'>
                         <img src={item.img} alt={item.title} />
                       </figure>
                     </div>

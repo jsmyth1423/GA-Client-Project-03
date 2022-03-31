@@ -22,12 +22,7 @@
   background-image: url('https://html.sammy-codes.com/images/background.jpg');
   background-size: cover;
   opacity: 0.8;
-}
-
-#mypodcasts-wrapper {
-  background-image: url('https://wallpaperaccess.com/full/798906.jpg');
-  background-size: cover;
-  opacity: 0.9;
+  height: 100vh;
 }
 
 #podcast-card {
@@ -198,4 +193,16 @@ h3 {
 }
 #search-bar{
   padding: 10px 10px 10px 5px;
+}
+
+.addAnImage {
+  background-image: url('https://wallpaperaccess.com/full/798906.jpg');
+  background-size: cover;
+  opacity: 0.9;
+  height: 100vh;
+}
+
+.column.card.m-4.is-one-fifth {
+  font-size: 20px;
+
 }
