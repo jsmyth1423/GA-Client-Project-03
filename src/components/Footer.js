@@ -4,22 +4,21 @@ const Footer = () => {
   return (
     <footer id='footer-main'>
       <div className='content has-text-centered'>
-        <p id='footer-text'>
-          <p></p>
+        <p>
           <p>
-            GA-Project-3 | Created by <a
+            GA-Project-3 | Created by <a className='footer-links'
               href="https://github.com/SwagapottamusRex"
               target="_blank"
               rel="noreferrer"
             >
               Oscar Dial
-            </a>, <a
+            </a>, <a className='footer-links'
               href="https://github.com/jsmyth1423"
               target="_blank"
               rel="noreferrer"
             >
               Jordan Smyth
-            </a> &amp; <a
+            </a> &amp; <a className='footer-links'
               href="https://github.com/beltonjohn"
               target="_blank"
               rel="noreferrer"
