@@ -3,7 +3,12 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 
-import { getPodcastById, deleteComment, createComment, deletePodcast } from '../api/podcasts';
+import {
+  getPodcastById,
+  deleteComment,
+  createComment,
+  deletePodcast,
+} from '../api/podcasts';
 import { updateUser, getUser } from '../api/auth';
 
 const PodcastCard = () => {
@@ -11,53 +16,24 @@ const PodcastCard = () => {
   const { id } = useParams();
   const [podcast, setPodcast] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
-  const [userLiked, setUserLiked] = React.useState(false);
+  const [userLiked, setUserLiked] = React.useState(true);
+  const userId = getLoggedInUserId();
 
-  // const like = (
-  //   <button
-  //     type='button'
-  //     className='button is-success mt-4'
-  //     onClick={handleLikePodcast}
-  //   >
-  //     Like 
-  //   </button>
-  // );
-  // const unlike = (
-  //   <button
-  //     type='button'
-  //     className='button is-danger mt-4'
-  //     onClick={handleLikePodcast}
-  //   >
-  //     Unlike
-  //   </button>
-  // );
   React.useEffect(() => {
-    const setLikeOnRefresh = async () => {
+    const getDataAndUpdate = async () => {
       try {
-        const userId = await getLoggedInUserId();
-        const getUserInfo = await getUser(userId);
-        const likedPodcast = getUserInfo.likedPodcasts;
-        likedPodcast.map((item) => {
-          if (item._id == id) {
-            setUserLiked(true);
-            
-          } else {
-            setUserLiked(false);
-          }
-        });
-      } catch (err) {
-        console.log(err);
+        const podcast = await getPodcastById(id);
+        const user = await getUser(userId);
+
+        console.log(user.likedPodcasts);
+        setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
+
+        setPodcast(podcast);
+      } catch (error) {
+        console.error(error);
       }
     };
-    setLikeOnRefresh();
-  }, []);
-
-  React.useEffect(() => {
-    const getData = async () => {
-      const podcast = await getPodcastById(id);
-      setPodcast(podcast);
-    };
-    getData();
+    getDataAndUpdate();
   }, []);
 
   const handleCommentChange = (e) => {
@@ -79,7 +55,11 @@ const PodcastCard = () => {
   const handlePodcastDelete = async (podcastId) => {
     try {
       // window.confirm('Are you sure you want to delete this podcast? ')
-      if (confirm('Are you sure you want to delete the podcast? Press OK to continue!')) {
+      if (
+        confirm(
+          'Are you sure you want to delete the podcast? Press OK to continue!'
+        )
+      ) {
         // text = 'Podcast Deleted';
         await deletePodcast(podcastId);
         navigate('/podcasts');
@@ -90,26 +70,15 @@ const PodcastCard = () => {
   };
 
   const handleLikePodcast = async () => {
-    console.log('handleLikePodcast')
     try {
       const userId = await getLoggedInUserId();
       const user = await updateUser(userId, id);
       const userHasLiked = user.data.likedPodcasts.includes(id);
-      console.log('user', user, id)
-      console.log('userhasLiked', userHasLiked)
-      if (userHasLiked) {
-        setUserLiked(false);
-      } else {
-        setUserLiked(true);
-      }
+      setUserLiked(userHasLiked);
     } catch (err) {
       console.log(err);
     }
   };
-
-
-
-
 
   if (!podcast) {
     return <p>loading...</p>;
@@ -140,18 +109,17 @@ const PodcastCard = () => {
             </button>
           )}
 
-          {getLoggedInUserId() &&
-            
-              <button
-                type='button'
-                className={`button  ${userLiked ? 'is-danger' : 'is-success'} mt-4`}
-                onClick={handleLikePodcast}
-              >
-                {userLiked ? 'Unlike' : 'Like'}
-              </button>
-}
-
-          
+          {getLoggedInUserId() && (
+            <button
+              type='button'
+              className={`button  ${
+                userLiked ? 'is-danger' : 'is-success'
+              } mt-4`}
+              onClick={handleLikePodcast}
+            >
+              {userLiked ? 'Unlike' : 'Like'}
+            </button>
+          )}
         </div>
         <div className='column is-half'>
           <div className='card'>
