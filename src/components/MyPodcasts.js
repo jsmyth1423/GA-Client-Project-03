@@ -28,7 +28,7 @@ const MyPodcasts = () => {
         <h1 className='title has-text-centered welcome-msg'>Hello {userObject.username}, welcome to your page</h1>
         <section>
           <h1>Here are your liked Podcasts:</h1>
-          <div className='container is-dark'>
+          <div className='container is-dark mb-6'>
             <div className='columns is-multiline' >
               {likedPodcastsArray.map((item) => (
                 <div

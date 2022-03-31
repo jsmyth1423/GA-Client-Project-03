@@ -82,14 +82,27 @@ nav {
   background-color: hsl(0, 0%, 21%);
   color: white;
 }
-a:link {
+
+#card-links:visited {
   color: black;
 }
-a:visited {
-  color: black;
+
+a.footer-links:visited {
+  color: white;
 }
+a.footer-links:hover {
+  color: hsl(171, 100%, 41%);
+  text-decoration: underline;
+}
+
+a {
+  color:black;
+}
+
+
 a:hover {
   color: hsl(171, 100%, 41%);
+  text-decoration: underline;
 }
 #footer-main {
   background-color: hsl(0, 0%, 21%);
@@ -99,6 +112,7 @@ a:hover {
   opacity: 0.9;
   color: white;
   margin-top: 0;
+  position: fixed;
 }
 strong,
 h3 {
