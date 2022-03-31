@@ -57,7 +57,7 @@ function PodcastNew() {
   }
 
   return (
-    <section>
+    <section className='mt-6'>
       <div className='container'>
         <div className='columns'>
           <form

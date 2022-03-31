@@ -34,16 +34,12 @@ const Navbar = () => {
     event.target.parentElement.parentElement.parentElement.classList.toggle(
       'is-active'
     );
-    event.target.parentElement.parentElement.classList.toggle(
-      'is-active'
-    );
-
+    event.target.parentElement.parentElement.classList.toggle('is-active');
   }
 
   function capitalizeFirstLetter(searchField) {
     return searchField.charAt(0).toUpperCase() + searchField.slice(1);
   }
-
 
   return (
     <>
@@ -72,7 +68,10 @@ const Navbar = () => {
             </Link>
           )}
           {getLoggedInUserId() && (
-            <Link to={`/mypodcasts/${getLoggedInUserId()}`} className='navbar-item'>
+            <Link
+              to={`/mypodcasts/${getLoggedInUserId()}`}
+              className='navbar-item'
+            >
               My Podcasts
             </Link>
           )}
@@ -130,9 +129,7 @@ const Navbar = () => {
           <section className='hero is-fullheight-with-navbar mt-6'>
             <div className='hero-body'>
               <div className='container'>
-                <div
-                  className='columns is-multiline'
-                >
+                <div className='columns is-multiline'>
                   <SearchByName
                     key={whatUserTypes}
                     userSearches={whatUserTypes}

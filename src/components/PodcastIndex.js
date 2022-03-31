@@ -16,7 +16,7 @@ const PodcastIndex = () => {
   return (
     <>
       <section className='hero is-fullheight-with-navbar' id='index-container'>
-        <h1 className='title'>Podcasts:</h1>
+        <h1 className='title'></h1>
         {podcasts ? (
           <div className='container is-dark'>
             <div className='columns is-multiline' id='podcast-inner'>
@@ -29,7 +29,7 @@ const PodcastIndex = () => {
                   <Link to={`/podcasts/${podcast._id}`}>
                     <h2 className='card-header'>{podcast.title}</h2>
                     <div className='card-image'>
-                      <figure className='image'>
+                      <figure className='image is-1by1'>
                         <img src={podcast.img} alt={podcast.title} />
                       </figure>
                     </div>

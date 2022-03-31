@@ -70,7 +70,7 @@ function PodcastNew() {
 
   return (
     <section>
-      <div className='container'>
+      <div className='container mt-6'>
         <div className='columns'>
           <form
             className='column is-half is-offset-one-quarter box'
@@ -163,9 +163,7 @@ function PodcastNew() {
 
             <div className='field'>
               <label className='label'>Genre</label>
-              <div className='dropdown'
-                onClick={handleIsActive}
-              >
+              <div className='dropdown' onClick={handleIsActive}>
                 <div className='dropdown-trigger'>
                   <div
                     className='button'

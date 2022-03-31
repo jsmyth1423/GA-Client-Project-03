@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
+import Footer from './Footer';
 import PodcastIndex from './PodcastIndex';
 import PodcastCard from './PodcastCard';
 import Navbar from './Navbar';
@@ -26,6 +27,7 @@ const App = () => (
       <Route path='createpodcast' element={<PodcastNew />} />
       <Route path='/mypodcasts/:id' element={<MyPodcasts />} />
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 

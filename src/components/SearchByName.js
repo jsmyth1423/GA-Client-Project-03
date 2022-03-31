@@ -16,7 +16,6 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
     getData();
   }, [userSearches, searchByField]);
 
-
   return (
     <>
       {!podcast.length ? (
@@ -24,19 +23,19 @@ const SearchPodcast = ({ userSearches, searchByField }) => {
       ) : (
         podcast.map((item) => {
           return (
-            <div key={item._id} className="column card is-one-fifth">
+            <div key={item._id} className='column card is-one-fifth'>
               <Link
                 to={`/podcasts/${item._id}`}
                 onClick={
                   <Link
                     to={`/podcast/${item._id}`}
-                    className="navbar-item"
+                    className='navbar-item'
                   ></Link>
                 }
               >
-                <h2 className="card-header">Title: {item.title}</h2>
-                <div className="card-image">
-                  <figure className="image">
+                <h2 className='card-header'>{item.title}</h2>
+                <div className='card-image'>
+                  <figure className='image is-1by1'>
                     <img src={item.img} alt={item.title} />
                   </figure>
                 </div>

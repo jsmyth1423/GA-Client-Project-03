@@ -32,46 +32,47 @@ const Login = () => {
   };
 
   return (
-    <div className='container is-fluid'>
-      <form
-        className='column is-half is-offset-one-quarter box is-narrow'
-        onSubmit={handleSubmit}
-      >
-        <div className='field'>
-          <label htmlFor='email' className='label'>
-            Email
-          </label>
-          <div className='control'>
-            <input
-              type='text'
-              className='input'
-              id='email'
-              value={emailValue}
-              onChange={handleEmailChange}
-            />
-          </div>
-        </div>
-        <div className='field'>
-          <label htmlFor='password' className='label'>
-            Password
-          </label>
-          <div className='control'>
-            <input
-              type='password'
-              className='input'
-              id='password'
-              value={passwordValue}
-              onChange={handlePasswordChange}
-            />
-          </div>
-        </div>
+    <div className='hero is-fullheight-with-navbar' id='login-background'>
+      <body className='login-container'>
+        <div>
+          <form className='box' onSubmit={handleSubmit}>
+            <div className='field'>
+              <label htmlFor='email' className='label'>
+                Email
+              </label>
+              <div className='control'>
+                <input
+                  type='text'
+                  className='input'
+                  id='email'
+                  value={emailValue}
+                  onChange={handleEmailChange}
+                />
+              </div>
+            </div>
+            <div className='field'>
+              <label htmlFor='password' className='label'>
+                Password
+              </label>
+              <div className='control'>
+                <input
+                  type='password'
+                  className='input'
+                  id='password'
+                  value={passwordValue}
+                  onChange={handlePasswordChange}
+                />
+              </div>
+            </div>
 
-        <input
-          className='button is-primary is-fullwidth'
-          type='submit'
-          value='Login'
-        />
-      </form>
+            <input
+              className='button is-primary is-fullwidth'
+              type='submit'
+              value='Login'
+            />
+          </form>
+        </div>
+      </body>
     </div>
   );
 };
