@@ -23,12 +23,12 @@ const PodcastCard = () => {
     const getDataAndUpdate = async () => {
       try {
         const podcast = await getPodcastById(id);
+        setPodcast(podcast);
         const user = await getUser(userId);
 
-        console.log(user.likedPodcasts);
+        
         setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
 
-        setPodcast(podcast);
       } catch (error) {
         console.error(error);
       }

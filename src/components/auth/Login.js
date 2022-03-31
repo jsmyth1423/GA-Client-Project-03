@@ -25,7 +25,7 @@ const Login = () => {
         });
         navigate('/podcasts');
       } catch (err) {
-        console.log('HI', err);
+        console.log('Error', err);
       }
     };
     getData();

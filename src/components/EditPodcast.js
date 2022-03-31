@@ -61,7 +61,7 @@ function PodcastNew() {
   }
 
   function handleSelect(event) {
-    console.log('value of targer', event.target.id);
+
     setPodcast({
       ...podcast,
       genre: event.target.id,
