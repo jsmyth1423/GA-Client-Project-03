@@ -5,10 +5,28 @@ const Footer = () => {
     <footer id='footer-main'>
       <div className='content has-text-centered'>
         <p id='footer-text'>
-          <strong>
-            Created by Oscar Dial, Jordan Smyth &amp; Matthew Creese
-          </strong>
-          <h3>SEI-62 Project-3</h3>
+          <p></p>
+          <p>
+            GA-Project-3 | Created by <a
+              href="https://github.com/SwagapottamusRex"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Oscar Dial
+            </a>, <a
+              href="https://github.com/jsmyth1423"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Jordan Smyth
+            </a> &amp; <a
+              href="https://github.com/beltonjohn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Matthew Creese
+            </a>
+          </p>
         </p>
       </div>
     </footer>

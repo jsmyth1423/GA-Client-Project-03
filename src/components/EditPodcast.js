@@ -244,6 +244,7 @@ function PodcastNew() {
                 </span>
               </button>
             </div>
+            <p>* is a required field!</p>
           </form>
         </div>
       </div>

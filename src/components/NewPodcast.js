@@ -57,11 +57,11 @@ function PodcastNew() {
   }
 
   return (
-    <section className='mt-6'>
+    <section className='mt-2 ' id='newpodcast-container'>
       <div className='container'>
         <div className='columns'>
           <form
-            className='column is-half is-offset-one-quarter box'
+            className='my-3 column is-half is-offset-one-quarter box'
             onSubmit={handleSubmit}
           >
             <div className='field'>
@@ -230,6 +230,7 @@ function PodcastNew() {
                 </span>
               </button>
             </div>
+            <p>* is a required field!</p>
           </form>
         </div>
       </div>

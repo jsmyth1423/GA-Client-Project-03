@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav>
+      <nav className='navbar-wrapper'>
         <div className='navbar-brand is-mobile'>
           <Link to='/' className='navbar-item'>
             <p>Home</p>
