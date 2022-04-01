@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <>
       <nav className='navbar-wrapper'>
-        <div className='navbar-brand is-mobile'>
+        <div className='navbar-brand'>
           <Link to='/' className='navbar-item' onClick={resetSearchBar}>
             <p className='fontstyling'>Home</p>
             <span className='icon'>

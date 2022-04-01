@@ -20,16 +20,26 @@ const PodcastCard = () => {
   const userId = getLoggedInUserId();
   const [rating, setRating] = React.useState(5);
   const [userObject, setUserObject] = React.useState('');
+  const [average, setAverage]=React.useState()
+  const [unrounded, setUnrounded]=React.useState(0)
+  const [commentLength, setCommentLength] = React.useState(0)
 
   React.useEffect(() => {
     const getDataAndUpdate = async () => {
       try {
+        let p = 0;
         const podcast = await getPodcastById(id);
         setPodcast(podcast);
         const user = await getUser(userId);
         setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
-        console.log(user.username);
         setUserObject(user);
+        const arrayComments = podcast.comments
+        arrayComments.map((item) =>{
+          p = p+ item.rating
+        })
+        const thatNumber = p/podcast.comments.length
+        const roundThatNumber = Math.round(thatNumber * 10) /10
+        setAverage(roundThatNumber)
       } catch (error) {
         console.error(error);
       }
@@ -42,17 +52,35 @@ const PodcastCard = () => {
   };
 
   const handleCommentSubmit = async (e) => {
+    let i = 0;
     e.preventDefault();
     const data = await createComment(id, {
       text: commentValue,
       rating: rating,
     });
+    const commentsArray = data.comments
+    commentsArray.map((item)=>{
+      i= i + item.rating
+    })
+    setCommentLength(commentsArray.length)
+    const averageN = i/commentsArray.length
+    setUnrounded(averageN)
+    const roundNumber = Math.round(averageN * 10)/10;
+    setAverage(roundNumber);
     setCommentValue('');
     setPodcast(data);
   };
 
   const handleCommentDelete = async (commentId) => {
+    let y = 0;
     const data = await deleteComment(id, commentId);
+    const newData = await getPodcastById(id)
+    newData.comments.map((item) => {
+      y = y + item.rating
+    })
+    const newAverage = y / newData.comments.length
+    const roundedNewAverage = Math.round(newAverage * 10)/10
+    setAverage(roundedNewAverage);
     setPodcast(data);
   };
 
@@ -97,9 +125,11 @@ const PodcastCard = () => {
   };
 
   function handleSelect(event) {
-    console.log(event.target.value)
     setRating(event.target.value);
   }
+
+
+  
 
   if (!podcast) {
     return (
@@ -107,7 +137,7 @@ const PodcastCard = () => {
     );
   }
   return (
-    <div className='container mt-6'>
+    <div className='container mt-6 podcastView'>
       <div className='columns'>
         <div className='column is-half'>
           <figure className='image'>
@@ -141,7 +171,9 @@ const PodcastCard = () => {
           {getLoggedInUserId() && (
             <button
               type='button'
-              className={`button  ${userLiked ? 'is-danger' : 'is-success'} mt-4`}
+              className={`button  ${
+                userLiked ? 'is-danger' : 'is-success'
+              } mt-4`}
               onClick={handleLikePodcast}
             >
               {userLiked ? 'Unlike 💔' : 'Like ❤️'}
@@ -151,12 +183,21 @@ const PodcastCard = () => {
         <div className='column is-half'>
           <div className='card podcastcard-wrapper'>
             <h2 className='title'>{podcast.title}</h2>
-            <h3 className='subtitle'><b>Genre:</b> {podcast.genre}</h3>
+            <hr></hr>
+            <h3 className='subtitle'>
+              <b>Genre:</b> {podcast.genre}
+            </h3>
+            <p>
+              <b>Average Rating:</b> {average}
+            </p>
+            <br></br>
             <p>
               <b>Hosted by:</b> {podcast.host} and joined by {podcast.guests}{' '}
             </p>
             <hr></hr>
-            <p><b>Description:</b> {podcast.description}</p>
+            <p>
+              <b>Description:</b> {podcast.description}
+            </p>
           </div>
 
           {getLoggedInUserId() && (
@@ -198,19 +239,39 @@ const PodcastCard = () => {
                       id='selectList'
                       onClick={handleSelect}
                     >
-                      <button className='dropdown-item star1' type='button' value='1'>
+                      <button
+                        className='dropdown-item star1'
+                        type='button'
+                        value='1'
+                      >
                         1 ⭐
                       </button>
-                      <button className='dropdown-item star2' type='button' value='2'>
+                      <button
+                        className='dropdown-item star2'
+                        type='button'
+                        value='2'
+                      >
                         2 ⭐⭐
                       </button>
-                      <button className='dropdown-item star3' type='button' value='3'>
+                      <button
+                        className='dropdown-item star3'
+                        type='button'
+                        value='3'
+                      >
                         3 ⭐⭐⭐
                       </button>
-                      <button className='dropdown-item star4' type='button' value='4'>
+                      <button
+                        className='dropdown-item star4'
+                        type='button'
+                        value='4'
+                      >
                         4 ⭐⭐⭐⭐
                       </button>
-                      <button className='dropdown-item star5' type='button' value='5'>
+                      <button
+                        className='dropdown-item star5'
+                        type='button'
+                        value='5'
+                      >
                         5 ⭐⭐⭐⭐⭐
                       </button>
                     </div>
@@ -237,14 +298,19 @@ const PodcastCard = () => {
                   <div className='card m-2 comment-card-wrapper'>
                     <p>{userObject.username} commented:</p>
                     <hr></hr>
-                    <p><b>{comment.text}</b></p>
-                    <p><i>with a rating of {comment.rating}/5</i></p>
-                  </div>
+                    <div className='wrapThisText'>
+                    <p className='fixBug'>
+                      <b>{comment.text}</b>
+                    </p>
+                    </div>
+                    <p>
+                      <i>with a rating of {comment.rating}/5</i>
+                    </p>
                   {getLoggedInUserId() === comment.createdBy && (
                     <>
                       <button
                         type='button'
-                        className='button is-danger'
+                        className='button is-danger isRight'
                         onClick={() => handleCommentDelete(comment._id)}
                       >
                         <p>Remove comment</p>
@@ -254,6 +320,7 @@ const PodcastCard = () => {
                       </button>
                     </>
                   )}
+                  </div>
                 </div>
               );
             })}

@@ -56,7 +56,7 @@
   justify-content: space-around;
 }
 .login-container {
-  opacity: 0.8;
+  opacity: 0.95;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +114,7 @@ a:hover {
   height: 2rem;
   opacity: 0.9;
   color: white;
-  margin-top: 0;
+  margin-top: 0px;
   position: fixed;
 }
 strong,
@@ -211,4 +211,24 @@ h3 {
 
 .column.card.m-4.is-one-fifth {
   font-size: 20px;
+}
+
+.isRight {
+  float:right;
+  position: relative;
+  top: -35px;
+}
+
+
+.wrapThisText {
+  word-wrap: break-word;
+  padding-bottom: 30px;
+}
+
+.columns {
+  padding-bottom: 40px;
+}
+
+.navbar-brand.is-mobile{
+  position: sticky;
 }
