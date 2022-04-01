@@ -296,7 +296,7 @@ const PodcastCard = () => {
               return (
                 <div key={comment._id}>
                   <div className='card m-2 comment-card-wrapper'>
-                    <p>{userObject.username} commented:</p>
+                    <p>Comment:</p>
                     <hr></hr>
                     <div className='wrapThisText'>
                     <p className='fixBug'>
@@ -304,7 +304,7 @@ const PodcastCard = () => {
                     </p>
                     </div>
                     <p>
-                      <i>with a rating of {comment.rating}/5</i>
+                      <i>Rating: {comment.rating}/5</i>
                     </p>
                   {getLoggedInUserId() === comment.createdBy && (
                     <>
