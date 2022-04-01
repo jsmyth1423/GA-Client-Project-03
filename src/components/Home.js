@@ -9,7 +9,7 @@ const Home = () => {
             className='title has-text-centered has-text-danger'
             id='welcome-message'
           >
-            Welcome to Purely Pocast
+            Welcome to Purely Podcast
           </h1>
         </div>
       </div>
