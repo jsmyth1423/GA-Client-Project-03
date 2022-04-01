@@ -97,7 +97,8 @@ const PodcastCard = () => {
   };
 
   function handleSelect(event) {
-    setRating(event.target.innerText);
+    console.log(event.target.value)
+    setRating(event.target.value);
   }
 
   if (!podcast) {
@@ -143,7 +144,7 @@ const PodcastCard = () => {
               className={`button  ${userLiked ? 'is-danger' : 'is-success'} mt-4`}
               onClick={handleLikePodcast}
             >
-              {userLiked ? 'Unlike' : 'Like'}
+              {userLiked ? 'Unlike 💔' : 'Like ❤️'}
             </button>
           )}
         </div>
@@ -181,6 +182,9 @@ const PodcastCard = () => {
                       aria-controls='dropdown-menu3'
                     >
                       <span>Select Rating: {rating}</span>
+                      <span class='icon is-small'>
+                        <i class='fas fa-angle-down' aria-hidden='true'></i>
+                      </span>
                     </div>
                   </div>
                   <div
@@ -194,19 +198,21 @@ const PodcastCard = () => {
                       id='selectList'
                       onClick={handleSelect}
                     >
-                      <a className='dropdown-item'>1</a>
-                      <a className='dropdown-item' id='business'>
-                        2
-                      </a>
-                      <a className='dropdown-item' id='comedy'>
-                        3
-                      </a>
-                      <a className='dropdown-item' id='crime'>
-                        4
-                      </a>
-                      <a className='dropdown-item' id='culture'>
-                        5
-                      </a>
+                      <button className='dropdown-item star1' type='button' value='1'>
+                        1 ⭐
+                      </button>
+                      <button className='dropdown-item star2' type='button' value='2'>
+                        2 ⭐⭐
+                      </button>
+                      <button className='dropdown-item star3' type='button' value='3'>
+                        3 ⭐⭐⭐
+                      </button>
+                      <button className='dropdown-item star4' type='button' value='4'>
+                        4 ⭐⭐⭐⭐
+                      </button>
+                      <button className='dropdown-item star5' type='button' value='5'>
+                        5 ⭐⭐⭐⭐⭐
+                      </button>
                     </div>
                   </div>
                 </div>

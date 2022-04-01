@@ -27,8 +27,10 @@ const PodcastIndex = () => {
                   id='podcast-card'
                 >
                   <Link to={`/podcasts/${podcast._id}`}>
-                    <h2 className='card-header' id='card-links'>{podcast.title}</h2>
-                    <div className='card-image'>
+                    <h2 className='card-header' id='card-links'>
+                      {podcast.title}
+                    </h2>
+                    <div className='card-image pt-2'>
                       <figure className='image is-1by1'>
                         <img src={podcast.img} alt={podcast.title} />
                       </figure>
