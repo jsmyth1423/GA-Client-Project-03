@@ -26,7 +26,7 @@ const MyPodcasts = () => {
     <>
       <section className='hero' id='mypodcasts-wrapper'>
         <section className='addAnImage'>
-        <h1 className='title has-text-centered welcome-msg'>Hello {userObject.username}, welcome to your liked podcasts!</h1>
+          <h1 className='title has-text-centered welcome-msg'>Hello {userObject.username}, welcome to your liked podcasts!</h1>
           <div className='container is-dark mb-6'>
             <div className='columns is-multiline' >
               {likedPodcastsArray.map((item) => (

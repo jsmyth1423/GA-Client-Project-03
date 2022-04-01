@@ -24,7 +24,7 @@ const Navbar = () => {
     setWhatUserTypes('');
   }
 
-  function resetSearchBar(event) {
+  function resetSearchBar() {
     setWhatUserTypes('');
   }
 
@@ -51,21 +51,21 @@ const Navbar = () => {
         <div className='navbar-brand is-mobile'>
           <Link to='/' className='navbar-item' onClick={resetSearchBar}>
             <p className='fontstyling'>Home</p>
-            <span class='icon'>
-              <i class='fas fa-home has-text-white'></i>
+            <span className='icon'>
+              <i className='fas fa-home has-text-white'></i>
             </span>
           </Link>
           <Link to='/podcasts' className='navbar-item' onClick={resetSearchBar}>
             <p className='fontstyling'>Podcasts</p>
-            <span class='icon'>
-              <i class='fas fa-headphones has-text-white'></i>
+            <span className='icon'>
+              <i className='fas fa-headphones has-text-white'></i>
             </span>
           </Link>
           {!getLoggedInUserId() && (
             <Link to='/login' className='navbar-item' onClick={resetSearchBar}>
               <p className='fontstyling'>Login</p>
-              <span class='icon'>
-                <i class='fas fa-lock has-text-white'></i>
+              <span className='icon'>
+                <i className='fas fa-lock has-text-white'></i>
               </span>
             </Link>
           )}
@@ -76,8 +76,8 @@ const Navbar = () => {
               onClick={resetSearchBar}
             >
               <p className='fontstyling'>Register</p>
-              <span class='icon'>
-                <i class='fas fa-user has-text-white'></i>
+              <span className='icon'>
+                <i className='fas fa-user has-text-white'></i>
               </span>
             </Link>
           )}
@@ -118,8 +118,8 @@ const Navbar = () => {
                   aria-controls='dropdown-menu3'
                 >
                   <span>Search by: {capitalizeFirstLetter(searchField)}</span>
-                  <span class='icon is-small'>
-                    <i class='fas fa-angle-down' aria-hidden='true'></i>
+                  <span className='icon is-small'>
+                    <i className='fas fa-angle-down' aria-hidden='true'></i>
                   </span>
                 </button>
               </div>

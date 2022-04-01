@@ -102,8 +102,8 @@ const PodcastCard = () => {
 
   if (!podcast) {
     return (
-    <p>loading...</p>
-    )
+      <p>loading...</p>
+    );
   }
   return (
     <div className='container mt-6'>
@@ -119,8 +119,8 @@ const PodcastCard = () => {
               onClick={() => handlePodcastDelete(podcast._id)}
             >
               <p>Delete Podcast</p>
-              <span class='icon'>
-                <i class='icon fas fa-ban'></i>
+              <span className='icon'>
+                <i className='icon fas fa-ban'></i>
               </span>
             </button>
           )}
@@ -131,8 +131,8 @@ const PodcastCard = () => {
               onClick={() => navigate(`/podcasts/${podcast._id}/edit`)}
             >
               <p>Update Podcast</p>
-              <span class='icon'>
-                <i class='icon fas fa-info-circle'></i>
+              <span className='icon'>
+                <i className='icon fas fa-info-circle'></i>
               </span>
             </button>
           )}
@@ -140,8 +140,7 @@ const PodcastCard = () => {
           {getLoggedInUserId() && (
             <button
               type='button'
-              className={`button  ${userLiked ? 'is-danger' : 'is-success'
-                } mt-4`}
+              className={`button  ${userLiked ? 'is-danger' : 'is-success'} mt-4`}
               onClick={handleLikePodcast}
             >
               {userLiked ? 'Unlike' : 'Like'}
@@ -149,13 +148,14 @@ const PodcastCard = () => {
           )}
         </div>
         <div className='column is-half'>
-          <div className='card'>
+          <div className='card podcastcard-wrapper'>
             <h2 className='title'>{podcast.title}</h2>
-            <p>Genre: {podcast.genre}</p>
+            <h3 className='subtitle'><b>Genre:</b> {podcast.genre}</h3>
             <p>
-              Hosted by: {podcast.host} and joined by {podcast.guests}{' '}
+              <b>Hosted by:</b> {podcast.host} and joined by {podcast.guests}{' '}
             </p>
-            <p>{podcast.description}</p>
+            <hr></hr>
+            <p><b>Description:</b> {podcast.description}</p>
           </div>
 
           {getLoggedInUserId() && (
@@ -173,7 +173,7 @@ const PodcastCard = () => {
                   />
                 </div>
 
-                <div className='dropdown' onClick={handleIsActive}>
+                <div className='dropdown mt-2' onClick={handleIsActive}>
                   <div className='dropdown-trigger'>
                     <div
                       className='button'
@@ -217,8 +217,8 @@ const PodcastCard = () => {
                 value='Submit Comment'
               >
                 <p>Submit Comment</p>
-                <span class='icon'>
-                  <i class='fas fa-reply'></i>
+                <span className='icon'>
+                  <i className='fas fa-reply'></i>
                 </span>
               </button>
             </form>
@@ -228,9 +228,12 @@ const PodcastCard = () => {
             {podcast.comments.map((comment) => {
               return (
                 <div key={comment._id}>
-                  <p>{userObject.username} commented:</p>
-                  <p>{comment.text}</p>
-                  <p>{comment.rating}</p>
+                  <div className='card m-2 comment-card-wrapper'>
+                    <p>{userObject.username} commented:</p>
+                    <hr></hr>
+                    <p><b>{comment.text}</b></p>
+                    <p><i>with a rating of {comment.rating}/5</i></p>
+                  </div>
                   {getLoggedInUserId() === comment.createdBy && (
                     <>
                       <button
@@ -239,8 +242,8 @@ const PodcastCard = () => {
                         onClick={() => handleCommentDelete(comment._id)}
                       >
                         <p>Remove comment</p>
-                        <span class='icon'>
-                          <i class='icon fas fa-ban'></i>
+                        <span className='icon'>
+                          <i className='icon fas fa-ban'></i>
                         </span>
                       </button>
                     </>
