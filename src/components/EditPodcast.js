@@ -173,8 +173,8 @@ function PodcastNew() {
                     <span>
                       Selected Genre: {capitalizeFirstLetter(podcast.genre)}
                     </span>
-                    <span class='icon is-small'>
-                      <i class='fas fa-angle-down' aria-hidden='true'></i>
+                    <span className='icon is-small'>
+                      <i className='fas fa-angle-down' aria-hidden='true'></i>
                     </span>
                   </div>
                 </div>
@@ -239,8 +239,8 @@ function PodcastNew() {
                 onSubmit={handleSubmit}
               >
                 <p>Update my Podcast!</p>
-                <span class='icon'>
-                  <i class='icon fas fa-check-circle'></i>
+                <span className='icon'>
+                  <i className='icon fas fa-check-circle'></i>
                 </span>
               </button>
             </div>
