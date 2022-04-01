@@ -30,9 +30,6 @@ const PodcastCard = () => {
         let p = 0;
         const podcast = await getPodcastById(id);
         setPodcast(podcast);
-        const user = await getUser(userId);
-        setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
-        setUserObject(user);
         const arrayComments = podcast.comments
         arrayComments.map((item) =>{
           p = p+ item.rating
@@ -40,6 +37,9 @@ const PodcastCard = () => {
         const thatNumber = p/podcast.comments.length
         const roundThatNumber = Math.round(thatNumber * 10) /10
         setAverage(roundThatNumber)
+        const user = await getUser(userId);
+        setUserLiked(user.likedPodcasts.some((p) => p._id == podcast._id));
+        setUserObject(user);
       } catch (error) {
         console.error(error);
       }
