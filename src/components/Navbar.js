@@ -89,6 +89,9 @@ const Navbar = () => {
               onClick={resetSearchBar}
             >
               <p className='fontstyling'>Create New Podcast</p>
+              <span className='icon'>
+                <i className='fa fa-plus-circle has-text-white'></i>
+              </span>
             </Link>
           )}
           {getLoggedInUserId() && (
@@ -98,12 +101,18 @@ const Navbar = () => {
               onClick={resetSearchBar}
             >
               <p className='fontstyling'>My Podcasts</p>
+              <span className='icon'>
+                <i className='fas fa-music has-text-white'></i>
+              </span>
             </Link>
           )}
 
           <div className='navbar-end'>
             {getLoggedInUserId() && (
               <Link to='/' className='navbar-item' id='logout' onClick={logout}>
+                <span className='icon'>
+                  <i className='fa fa-arrow-left has-text-white'></i>
+                </span>
                 <p onClick={resetSearchBar} className='fontstyling'>
                   Logout
                 </p>
