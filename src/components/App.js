@@ -13,6 +13,11 @@ import '../styles/style.scss';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import MyPodcasts from './MyPodcasts';
+import axios from 'axios';
+
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = 'https://app-podcast-ga.herokuapp.com';
+}
 
 const App = () => (
   <BrowserRouter>
