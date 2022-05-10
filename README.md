@@ -45,41 +45,21 @@ We also used trello in order to divvy up which tasks would be done by each perso
 
 ## Key Challenges:
 
-The primary issues were as follows:
-1. Stopping the player character from moving onto and beyond the edges of the screen.
-2. Making the aliens drop one and move in the other direction once colliding with an edge.
-3. Collision detection between Alien & Player missile.
+The primary issue I personally encountered were as follows:
+1. The like button - This ended up being a very complex feature, much more than anticipated. This is mostly due to the need to sync the page upon refresh to the stored state of the button based on the user's profile. It ended up requiring input from other members of the group as well, which is never a bad thing but certainly wasn't an easy check off the list.
 
+This was resolved over a lot of iteration which I will highlight below:
 
-The majority of project time was spent on the above issues.
+1. Setting the liked podcasts of the user upon loading of the page with the original useEffect - 
+![image](https://user-images.githubusercontent.com/53213823/167672087-42036ecc-5649-4b83-b69a-9adaec8958d3.png)
 
-1. Originally I tried to define the edges of the area manually in an array, but found an easier solution being using modulus with the width of the grid pre-defined.
+2. 
 
-![image](https://user-images.githubusercontent.com/53213823/166149142-b5a20b3e-443e-4434-8717-51184aaac816.png)
-
----
-2. The below function handled Alien movement, with a series of if statements to check for the edges and then subsequent actions to create the moving block effect.
-
-![image](https://user-images.githubusercontent.com/53213823/166149254-334e8601-511c-4066-9280-d80a2ba52de1.png)
-
-This function also contained the logic for win and loss based on 3 factors, if the aliens collided with the player ship, if the aliens reached the bottom of the screen, as well as if the aliens were all destroyed.
-
-![image](https://user-images.githubusercontent.com/53213823/166149286-63b6e2c9-d247-4d99-a53a-3559d38da9b9.png)
-
----
-
-3. The final challenge was using timeouts for the missile movement as well as checking for collision with the alien, detailed below.
-
-![image](https://user-images.githubusercontent.com/53213823/166149386-d42a6521-f75a-444f-b99a-61ddbbce1f92.png)
 
 ---
 ## Lessons Learned
-1. Good planning makes all the difference:
-  For the areas I had planned out I flew through the coding since I was already fairly sure of the direction
-  Areas which I had not considered took much longer, in part due to complexity but also not having any direction to work towards.
-  
-2. Expectations are hard to gauge when you're starting out:
-  I was unsure of how much I would be able to get done if much at all within the 1 week period, having the stretch goals was useful as I allowed myself to work through   the main project quickly in order to try and implement them, which was a relief as I just about got my initial goals done, stretch aside. As projects have come and     gone I still find it difficult to gauge how long it will take when working with freshly learned material and new tools.
+1. Naming variables and functions **really** matters on bigger projects.
+Since the project was fairly large in scope, it was harder to keep track of everything especially since it being a group project meant you were not intimately familiar with every single line of code as in the case of solo projects. I found myself confused at times as to what I was actually looking at, needing to use console.logs and other tools in order to get my bearings. This can be highly mitigated by very specific naming practices, but it's not always possible for that to happen esepcially in our first time collaborating a group project. What made sense to one person could be nonsensical to another.
 ---
 
 ## Ideals 
