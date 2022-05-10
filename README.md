@@ -1,173 +1,89 @@
-# Project Three
+# Podcast People - SEI Project 3
 
-https://podcastsapp.netlify.app/
+[Play it here!](https://podcastsapp.netlify.app//)
 
-## Table of Contents:
+## Overview
 
-<li>Project Overview</li>
-<li>The Brief</li>
-<li>Technologies USed</li>
-<li>Approach Taken - (screenshots and featured code)</li>
-<li>Wins and Blockers</li>
-<li>Bugs</li>
-<li>Future Content and Improvements</li>
-<li>Key Learnings</li>
-
-<hr>
-
-## Project Overview
-
-This project consisted of building a custom backend API and frontend website/app using React. This was my first project using MERN (mongoDB, express, react, node). Our team of three had 9 days to build this app. 
+Podcast People is a simple app in which users can discover new podcasts as well as add their own so that other users can discover them too. It has function to register, login, upload podcasts, comment/rate and favourite them to maintain a list of your current favourites.
 
 
-## The Brief
+## The Task:
 
-<li>Build a full-stack application by making your own back-end and your own front-end
-<li>Use an Express API to serve your data from a Mongo database
-<li>Consume your API with a separate front-end built with React
-<li>Be a complete product which most likely means multiple relationships and CRUD operators for at least a couple of models
-<li>Implement thoughtful user stories/wireframes that are significant enough to help you know which features are core MVP and which you can cut
-<li>Be deployed online so it's publicly accessible.
+* Build a full-stack application by making your own back-end and your own front-end
+* Use an Express API to serve your data from a Mongo database
+* Consume your API with a separate front-end built with React
+* Be a complete product which most likely means multiple relationships and CRUD operators for at least a couple of models
+* Implement thoughtful user stories/wireframes that are significant enough to help you know which features are core MVP and which you can cut
+* Be deployed online so it's publicly accessible.
 
-## Technologies Used
+---
 
-### Back-end:
-<li>Node.js</li>
-<li>Mongodb</li>
-<li>Express</li>
-<li>Bcrypt</li>
-<li>Body-parser</li>
-<li>Mongoose</li>
-<li>jsonwebtoken</li>
+## Tools Used:
+
+Back-end:
+Node.js
+MongoDB
+Express
+Bcrypt
+Mongoose
+jsonwebtoken
 
 ### Frontend:
-<li>React</li>
-<li>Axios</li>
-<li>Bulma</li>
-<li>SCSS</li>
-<li>Http-proxy-middleware</li>
-<li>Nodemon</li>
-<li>React Router Dom</li>
+React
+Axios
+Bulma
+SCSS
+
+## The Plan: 
+![image](https://user-images.githubusercontent.com/53213823/167623926-6f8fc4cb-106e-4a48-a0a5-b655dd4b1bd7.png)
+
+We collaboratively wireframed our goals for the project as well the majority of the steps we would have to take in both front and back-end.
+
+We also used trello in order to divvy up which tasks would be done by each person, this definitely made the larger-scope project easier to keep track of.
+![image](https://user-images.githubusercontent.com/53213823/167624348-90b7c9ae-4abb-4cb8-a091-fd76a30df151.png)
 
 
-### Development tools:
-<li>VS code</li>
-<li>NPM</li>
-<li>Insomnia</li>
-<li>Git</li>
-<li>Github</li>
-<li>Google Chrome dev tools</li>
-<li>Heroku (deployment)</li>
-<li>Trello Board (planning and timeline)</li>
-<li>Excalidraw (wireframing)</li>
+## Key Challenges:
 
-## Approach Taken
-
-### Day 1
-
-Our team of three quickly settled on the idea of building a podcast website where users could register, login, create and like their own podcasts. Using Trello board and excalidraw we were able to plan out our ideas and divide up the tasks. The Trello board was especially useful when trying to see our progress and what was still missing. Excalidraw was used to visualise our idea better.  
-
-<img src="./screenshotEx.png" alt="excali" width="500"/>
+The primary issues were as follows:
+1. Stopping the player character from moving onto and beyond the edges of the screen.
+2. Making the aliens drop one and move in the other direction once colliding with an edge.
+3. Collision detection between Alien & Player missile.
 
 
-## Day 2 - 3
+The majority of project time was spent on the above issues.
 
-Our team decided to finish the backend completly first before starting the frontend. The backend side of the project consisted of building CRUD operators for our Mongo database. I was in charge of organised and dividing up the tasks which included creating the podcasts and comments controllers with all the necessary functionalities. A lot of the code was 'boiler plate' code which made it easy to replicate but nonetheless our team had to navigate platforms and tools we had never used before. Some code that I was proud of was because of how complex it was for me at the time to undertand was the SecureRoute.js file.
+1. Originally I tried to define the edges of the area manually in an array, but found an easier solution being using modulus with the width of the grid pre-defined.
 
-    import jwt from 'jsonwebtoken';
-    import User from '../models/user.js';
-    import { secret } from '../config/environment.js';
+![image](https://user-images.githubusercontent.com/53213823/166149142-b5a20b3e-443e-4434-8717-51184aaac816.png)
 
-    const secureRoute = async (req, res, next) => {
-      try {
-        const authToken = req.headers.authorization;
+---
+2. The below function handled Alien movement, with a series of if statements to check for the edges and then subsequent actions to create the moving block effect.
 
-        if (!authToken || !authToken.startsWith('Bearer')) {
-          return res.status(401).send({ message: 'Unauthorized1' });
-        }
+![image](https://user-images.githubusercontent.com/53213823/166149254-334e8601-511c-4066-9280-d80a2ba52de1.png)
 
-        const token = authToken.replace('Bearer ', '');
+This function also contained the logic for win and loss based on 3 factors, if the aliens collided with the player ship, if the aliens reached the bottom of the screen, as well as if the aliens were all destroyed.
 
-        jwt.verify(token, secret, async (err, data) => {
-          if (err) {
-            return res.status(401).send({ message: 'Unauthorized2' });
-          }
+![image](https://user-images.githubusercontent.com/53213823/166149286-63b6e2c9-d247-4d99-a53a-3559d38da9b9.png)
 
-          const user = await User.findById(data.userId);
+---
 
-          if (!user) {
-            return res.status(401).send({ message: 'Unauthorized3' });
-          }
+3. The final challenge was using timeouts for the missile movement as well as checking for collision with the alien, detailed below.
 
-          req.currentUser = user;
-          next();
-        });
-      } catch (error) {
-        return res.status(401).send({ message: 'Unauthorized4' });
-      }
-    };
+![image](https://user-images.githubusercontent.com/53213823/166149386-d42a6521-f75a-444f-b99a-61ddbbce1f92.png)
 
-    export default secureRoute;
+---
+## Lessons Learned
+1. Good planning makes all the difference:
+  For the areas I had planned out I flew through the coding since I was already fairly sure of the direction
+  Areas which I had not considered took much longer, in part due to complexity but also not having any direction to work towards.
+  
+2. Expectations are hard to gauge when you're starting out:
+  I was unsure of how much I would be able to get done if much at all within the 1 week period, having the stretch goals was useful as I allowed myself to work through   the main project quickly in order to try and implement them, which was a relief as I just about got my initial goals done, stretch aside. As projects have come and     gone I still find it difficult to gauge how long it will take when working with freshly learned material and new tools.
+---
 
-## Day 4 - 9
+## Ideals 
 
-We started working on the front end fairly swiftly without having had too many git merge conflicts in the previous days. I was in charge of dividing up the tasks fairly and to each members' strengths. I created the MyPodcasts.js, Navbar.js, NewPodcast.js, SearchByName.js and the EditPodcast.js. During this time we tried to git merge as often as possible to make sure we had as few bugs and conflicts with our app (since the page would completely shut down for one slightly off element). In the final couple of days we had to play catch up with Bulma and styling since we weren't all quite comfortable with Bulma. Communication was a key part of this project as well as offering support to our teammates. Once finished with our project I deployed it using Netlify. One piece of code that I was particularily pleased about was the authentication file where I learnt and developed my understanding of Axios. 
-
-    import axios from 'axios';
-
-    export const registerUser = async (user) => {
-      const options = {
-        method: 'POST',
-        url: '/api/register',
-        data: user,
-      };
-      const { data } = await axios.request(options);
-      return data;
-    };
-
-    export const getUser = async (userId) => {
-      const options = {
-        method: 'GET',
-        url: `/api/user/${userId}`,
-        headers: {
-          authorization: `Bearer ${window.sessionStorage.getItem('token')}`
-        }
-      };
-
-      const { data } = await axios.request(options);
-      return data;
-    };
-
-    export const loginUser = async (credentials) => {
-      const options = {
-        method: 'POST',
-        url: '/api/login',
-        data: credentials,
-      };
-
-      const { data } = await axios.request(options);
-      if (data.token) {
-        window.sessionStorage.setItem('token', data.token);
-      } else {
-        window.sessionStorage.removeItem('token');
-      }
-      return data.message;
-    };
-
-## Wins and Blockers
-
-A big win for me and the team was the development, of us as individuals, of our communication skills as coders. Our planning also played a major part as to why we managed to achieve our goals and even push for some stretch goals. 
-
-One blocker that I noticed was our lack of skills in styling with Bulma and trying to reconcile our views as a team of what the styling theme should look like. Another blocker was the struggle I had with creating a like button for the podcasts which required some professional guidance.
-
-## Bugs 
-
-Perhaps not necessarily a bug but more of a hinderance is the lack of pop up when entering your password or email wrong when logging in as well as for when registering. Another 'bug' but maybe not entirely problematic is that the page is slow to load when displaying all the podcasts.
-
- ## Future Content and Improvements
-
-A major improvement can be implementing more notifications when registering with a weak password or with a username that already exists. I could also optimize our styling better as well to make the flow of the navigation smoother. 
-
- ## Key Learnings
-
- Communication and planning were the number one aspects I learnt from this project. Without these two things, a team of three with different views and opinions can very quickly become a chaotic playground with no foundation. I learnt a lot about how the backend API works with MongoDB and how to create secure routes inside the CRUD operators.
+1. Sound, just generally makes a game feel more game-y!
+2. Collision detection between missile and alien bombs so that the player can destroy them rather than just dodging.
+3. Learning how to make the movement of the aliens more smooth, perhaps CSS animations.
