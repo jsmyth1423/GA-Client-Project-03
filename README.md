@@ -62,9 +62,11 @@ The primary issue I personally encountered were as follows:
 This was resolved over a lot of iteration which I will highlight below:
 
 1. Setting the liked podcasts of the user upon loading of the page with the original useEffect - 
-![image](https://user-images.githubusercontent.com/53213823/167672087-42036ecc-5649-4b83-b69a-9adaec8958d3.png)
+![image](https://user-images.githubusercontent.com/53213823/167912634-30863d8f-3704-48de-855a-c5804f0cea34.png)
 
-2. 
+
+2. The onClick function to handle the liking needed to await on two other calls and then set the like status of the user
+![image](https://user-images.githubusercontent.com/53213823/167912797-9e8f5132-5e72-45e4-8fd5-9b19619c645d.png)
 
 
 ---
@@ -76,6 +78,10 @@ Since the project was fairly large in scope, it was harder to keep track of ever
 2. Having a lot of prep on the back-end makes front-end implentation a lot more seamless.
 
 Going back between the front-end and back-end is to some extent inevitable but we could have had a few more routes and controllers set up from the beginning to make life easier. It seems to me that over-preparing on this front is definitely preferable to under-preparing. 
+
+3. Async functions are tricky to perfect but super handy.
+
+Especially the order of certain lines which would not appear to be co-dependent, can really influence how seamless the page is and whether or not your states will get out of sync. Tinkering is almost always required since getting it right first time is a work in progress!
 
 ---
 
