@@ -68,7 +68,7 @@ This was resolved over a lot of iteration which I will highlight below:
 
 
 ---
-## Lessons Learned
+## Lessons Learned:
 1. Naming variables and functions **really** matters on bigger projects.
 
 Since the project was fairly large in scope, it was harder to keep track of everything especially since it being a group project meant you were not intimately familiar with every single line of code as in the case of solo projects. I found myself confused at times as to what I was actually looking at, needing to use console.logs and other tools in order to get my bearings. This can be highly mitigated by very specific naming practices, but it's not always possible for that to happen esepcially in our first time collaborating a group project. What made sense to one person could be nonsensical to another.
