@@ -20,19 +20,19 @@ Podcast People is a simple app in which users can discover new podcasts as well 
 
 ## Tools Used:
 
-Back-end:
-Node.js
-MongoDB
-Express
-Bcrypt
-Mongoose
-jsonwebtoken
+* Back-end:
+* Node.js
+* MongoDB
+* Express
+* Bcrypt
+* Mongoose
+* jsonwebtoken
 
 ### Frontend:
-React
-Axios
-Bulma
-SCSS
+* React
+* Axios
+* Bulma
+* SCSS
 
 ## The Plan: 
 ![image](https://user-images.githubusercontent.com/53213823/167623926-6f8fc4cb-106e-4a48-a0a5-b655dd4b1bd7.png)
