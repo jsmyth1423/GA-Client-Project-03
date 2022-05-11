@@ -42,6 +42,12 @@ We collaboratively wireframed our goals for the project as well the majority of 
 We also used trello in order to divvy up which tasks would be done by each person, this definitely made the larger-scope project easier to keep track of.
 ![image](https://user-images.githubusercontent.com/53213823/167624348-90b7c9ae-4abb-4cb8-a091-fd76a30df151.png)
 
+## Wins:
+
+* Using the .populate query made getting the information required to display the podcasts on the myPodcasts page extremely streamlined. I'm sure it will continue to be useful
+
+![image](https://user-images.githubusercontent.com/53213823/167890695-8be2a0ed-28af-41c7-93b5-cf7fcf37823b.png)
+
 
 ## Key Challenges:
 
