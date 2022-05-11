@@ -70,7 +70,12 @@ This was resolved over a lot of iteration which I will highlight below:
 ---
 ## Lessons Learned
 1. Naming variables and functions **really** matters on bigger projects.
+
 Since the project was fairly large in scope, it was harder to keep track of everything especially since it being a group project meant you were not intimately familiar with every single line of code as in the case of solo projects. I found myself confused at times as to what I was actually looking at, needing to use console.logs and other tools in order to get my bearings. This can be highly mitigated by very specific naming practices, but it's not always possible for that to happen esepcially in our first time collaborating a group project. What made sense to one person could be nonsensical to another.
+
+2. Having a lot of prep on the back-end makes front-end implentation a lot more seamless.
+
+Going back between the front-end and back-end is to some extent inevitable but we could have had a few more routes and controllers set up from the beginning to make life easier. It seems to me that over-preparing on this front is definitely preferable to under-preparing. 
 ---
 
 ## Ideals 
