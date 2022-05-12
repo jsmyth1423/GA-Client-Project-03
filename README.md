@@ -4,7 +4,7 @@
 
 ## Overview
 
-Podcast People is a simple app in which users can discover new podcasts as well as add their own so that other users can discover them too. It has function to register, login, upload podcasts, comment/rate and favourite them to maintain a list of your current favourites.
+Podcast People is a simple app in which users can discover new podcasts as well as add their own so that other users can discover them too. It has functions to register, login, upload podcasts, comment/rate and favourite them to maintain a list of your current favourites.
 
 
 ## The Task:
@@ -73,20 +73,19 @@ This was resolved over a lot of iteration which I will highlight below:
 ## Lessons Learned:
 1. Naming variables and functions **really** matters on bigger projects.
 
-Since the project was fairly large in scope, it was harder to keep track of everything especially since it being a group project meant you were not intimately familiar with every single line of code as in the case of solo projects. I found myself confused at times as to what I was actually looking at, needing to use console.logs and other tools in order to get my bearings. This can be highly mitigated by very specific naming practices, but it's not always possible for that to happen esepcially in our first time collaborating a group project. What made sense to one person could be nonsensical to another.
+Since the project was fairly large in scope, it was harder to keep track of everything especially since it being a group project meant you were not intimately familiar with every single line of code as in the case of solo projects. I found myself confused at times as to what I was actually looking at, needing to use console.logs and other tools in order to get my bearings. This can be highly mitigated by very specific naming practices, but it's not always possible for that to happen esepcially in our first time collaborating on a group project. What made sense to one person could be nonsensical to another.
 
-2. Having a lot of prep on the back-end makes front-end implentation a lot more seamless.
+2. Having a lot of prep on the back-end makes front-end implementation a lot more seamless.
 
 Going back between the front-end and back-end is to some extent inevitable but we could have had a few more routes and controllers set up from the beginning to make life easier. It seems to me that over-preparing on this front is definitely preferable to under-preparing. 
 
 3. Async functions are tricky to perfect but super handy.
 
-Especially the order of certain lines which would not appear to be co-dependent, can really influence how seamless the page is and whether or not your states will get out of sync. Tinkering is almost always required since getting it right first time is a work in progress!
+Especially the order of certain lines which would not appear to be codependent, can really influence how seamless the page is and whether or not your states will get out of sync. Tinkering is almost always required since getting it right the first time is a work in progress!
 
 ---
 
 ## Ideals 
 
-1. Sound, just generally makes a game feel more game-y!
-2. Collision detection between missile and alien bombs so that the player can destroy them rather than just dodging.
-3. Learning how to make the movement of the aliens more smooth, perhaps CSS animations.
+1. A snippet of the podcasts intergrated into the page to play.
+2. CSS animations for a more professional look
