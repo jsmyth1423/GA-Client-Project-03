@@ -44,11 +44,11 @@ We also used trello in order to divvy up which tasks would be done by each perso
 
 ## Wins:
 
-* Using the .populate query made getting the information required to display the podcasts on the myPodcasts page extremely streamlined. I'm sure it will continue to be useful
+1. Using the .populate query made getting the information required to display the podcasts on the myPodcasts page extremely streamlined. I'm sure it will continue to be useful
 
 ![image](https://user-images.githubusercontent.com/53213823/167890695-8be2a0ed-28af-41c7-93b5-cf7fcf37823b.png)
 
-* The component to show the user's home page ended up with some very clean and concise code, which is always a win!
+2. The component to show the user's home page ended up with some very clean and concise code, which is always a win!
 
 ![image](https://user-images.githubusercontent.com/53213823/167911696-d48aecfb-ea93-4d89-aa94-6f9abb0677a8.png)
 
